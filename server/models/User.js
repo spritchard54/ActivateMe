@@ -19,6 +19,12 @@ const userSchema = new Schema({
     required: true,
     minlength: 5,
   },
+  activities: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'activity'
+    }
+  ],
 });
 
 userSchema.pre('save', async function (next) {
