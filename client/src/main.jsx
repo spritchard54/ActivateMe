@@ -60,7 +60,7 @@ const router = createBrowserRouter([
         element: <ActivityLog />,
       },
       {
-        path: '/contact-us',
+        path: '/contact',
         element: <ContactUs />,
       },
       {
@@ -68,7 +68,7 @@ const router = createBrowserRouter([
         element: <ContactConfirm />,
       },
       {
-        path: '/about-us',
+        path: '/about',
         element: <AboutUs />,
       }
     ],

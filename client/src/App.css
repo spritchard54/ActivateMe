@@ -19,3 +19,28 @@ footer {
   height: 80px;
   box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.123);
 }
+
+#recActivities {
+  background-color: #c5601f;
+  color: white;
+  border-radius: 8px;
+  font-weight: bold;
+}
+
+/* Buttons */
+.logAct {
+  background-color: #198ed0;
+  color: white;
+  float: right;
+  border-radius: 5px;
+  padding: 5px 10px;
+  border: none;
+}
+
+.logAct:hover {
+  background-color: #136B9E;
+}
+
+.logAct:active {
+  transform: translateY(4px);
+}
