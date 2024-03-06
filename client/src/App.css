@@ -1,3 +1,6 @@
+
+/* Header Styles */
+
 header {
   height: 100px;
   width: 100%;
@@ -6,4 +9,13 @@ header {
 
 .navbar {
   width: 100%;
+}
+
+/* Footer Styles */
+
+footer {
+  position: fixed;
+  bottom: 0;
+  height: 80px;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.123);
 }
