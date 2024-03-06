@@ -3,11 +3,12 @@ const Category = require('./Category');
 
 
 const activitySchema = new Schema({
-    actName: {
-        type: String,
-        required: true,
-        trim: true,
-    },
+    activityType: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: 'ActivityType'
+        }
+    ],
     duration: {
         type: Schema.Types.Decimal128
     },
@@ -17,7 +18,12 @@ const activitySchema = new Schema({
         trim: true,
     },
     // add category reference
-    category: [Category]
+    category: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: 'category'
+        }
+    ],
 });
 
 const Activity = model('activity', activitySchema);
