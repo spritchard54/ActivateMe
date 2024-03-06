@@ -1,14 +1,17 @@
 // import { useState } from 'react'
-import './App.css'
+import { Outlet } from 'react-router-dom';
 
-import Header from './components/Header';
+import Header from './components/Header.jsx';
+import Footer from './components/Footer.jsx';
 
 function App() {
   // const [count, setCount] = useState(0)
 
   return (
     <>
-    <Header />
+      <Header />
+      <Outlet />
+      <Footer />l
     </>
   )
 }
