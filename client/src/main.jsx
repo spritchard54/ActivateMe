@@ -10,7 +10,7 @@ import './index.css'
 import './App.css'
 
 // import pages the router will use to conditionally show the appropriate views
-
+import App from './App.jsx';
 import Home from './pages/Homepage.jsx';
 import Error from './pages/Error.jsx';
 import Login from './pages/Login.jsx';
@@ -22,7 +22,6 @@ import ActivityLog from './pages/ActivityLog.jsx';
 import ContactUs from './pages/Contact.jsx';
 import ContactConfirm from './pages/ContactConfirm.jsx';
 import AboutUs from './pages/AboutUs.jsx';
-
 
 // Define the accessible routes, and which components respond to which URL
 const router = createBrowserRouter([
