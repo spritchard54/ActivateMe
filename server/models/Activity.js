@@ -1,4 +1,5 @@
 const { Schema, model } = require('mongoose');
+const Category = require('./Category');
 
 
 const activitySchema = new Schema({
@@ -15,6 +16,8 @@ const activitySchema = new Schema({
         required: true,
         trim: true,
     },
+    // add category reference
+    category: [Category]
 });
 
 const Activity = model('activity', activitySchema);
