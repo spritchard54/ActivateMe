@@ -52,17 +52,6 @@ export default function Header() {
 
             </Link>
 
-            <Link
-              to={'/contact'}
-              className='nav-link'
-            >
-
-              <p className="text">
-                Contact
-              </p>
-
-            </Link>
-
             <button>
               Logout
             </button>
