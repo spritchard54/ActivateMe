@@ -3,11 +3,13 @@ export default function Contact(){
 
   return(
 
-    <>
-    
-    {/* design code here */}
-    
-    </>
+    <div className="container-fluid w-75">
+      <div className="row">
+        <div className="col">
+          <p>Column 1</p>
+        </div>
+      </div>
+    </div>
 
   )
 
