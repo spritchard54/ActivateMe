@@ -23,7 +23,7 @@ export default function Header() {
           >
 
             <h1 id="dev-name">
-              Tom Dossman
+              ActivateMe.
             </h1>
 
           </Link>
@@ -31,23 +31,23 @@ export default function Header() {
           <div className="nav-box d-flex align-items-center gap-4 me-4">
 
             <Link
-              to={'/portfolio'}
+              to={'/dashboard'}
               className='nav-link'
             >
 
               <p className="text">
-                Portfolio
+                Dashboard
               </p>
 
             </Link>
 
             <Link
-              to={'/resume'}
+              to={'/log-activity'}
               className='nav-link'
             >
 
               <p className="text">
-                Resume
+                Create
               </p>
 
             </Link>
@@ -62,6 +62,10 @@ export default function Header() {
               </p>
 
             </Link>
+
+            <button>
+              Logout
+            </button>
 
 
           </div>
