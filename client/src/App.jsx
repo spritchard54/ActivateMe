@@ -11,7 +11,7 @@ function App() {
     <>
       <Header />
       <Outlet />
-      <Footer />l
+      <Footer />
     </>
   )
 }

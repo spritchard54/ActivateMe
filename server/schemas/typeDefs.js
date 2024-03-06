@@ -14,7 +14,7 @@ const typeDefs = `
 
     type Activity {
         _id: ID
-        duration: Decimal
+        duration: Float
         commentText: String
         category: Category
         activityType: ActivityType

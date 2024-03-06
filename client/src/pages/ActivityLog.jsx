@@ -1,5 +1,5 @@
 
-export default function CreateActivity(){
+export default function ActivityLog(){
 
   return(
 
