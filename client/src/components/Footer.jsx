@@ -13,6 +13,9 @@ export default function Footer() {
         <Link to={"/about"} className="nav-link">
           <p className="text">About Us</p>
         </Link>
+        <Link to={"/signup"} className="nav-link">
+          <p className="text">Sign Up</p>
+        </Link>
       </footer>
     </>
   );
