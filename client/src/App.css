@@ -44,3 +44,8 @@ footer {
 .logAct:active {
   transform: translateY(4px);
 }
+
+/* Forms */
+.loginInput {
+  margin-left: 95px;
+}
