@@ -1,3 +1,4 @@
+// This file keeps track of all the tokens so that they can be sent on graphql requests
 import decode from 'jwt-decode';
 
 class AuthService {
