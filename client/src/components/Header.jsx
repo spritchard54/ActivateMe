@@ -29,8 +29,9 @@ export default function Header() {
             <Link to={"/contact"} className="nav-link">
               <p className="text">Contact Us</p>
             </Link>
-
-            <button>Logout</button>
+            <Link to={"/login"} className="nav-link">
+            <button className="logAct">Log In</button>
+            </Link>
           </div>
         </nav>
       </header>

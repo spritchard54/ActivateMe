@@ -41,11 +41,15 @@ const Login = (props) => {
   };
 
   return (
-    <main className="flex-row justify-center mb-4">
-      <div className="col-12 col-lg-10">
-        <div className="card">
-          <h4 className="card-header bg-dark text-light p-2">Login</h4>
-          <div className="card-body">
+    <main className="flex-row justify-center my-4">
+      
+      <div className="col-6 col-lg-5 mx-auto my-4 ">
+        
+        <div className="card mt-5 ">
+         
+          <h4 className="card-header bg-dark text-light p-2 mb-4 ">Login</h4>
+         
+          <div className="card-body my-4 ">
             {data ? (
               <p>
                 Success! You may now head{' '}
@@ -53,24 +57,28 @@ const Login = (props) => {
               </p>
             ) : (
               <form onSubmit={handleFormSubmit}>
+                <label htmlFor="loginInput" className='form-label loginInput'>Username</label>
                 <input
-                  className="form-input"
-                  placeholder="Your email"
+                  id="loginInput"
+                  className="form-input border d-block mx-auto w-75 mb-3 p-2"
+                  placeholder="e.g, email@email.com"
                   name="email"
                   type="email"
                   value={formState.email}
                   onChange={handleChange}
                 />
+                <label htmlFor="loginInput" className='form-label loginInput'>Password</label>
                 <input
-                  className="form-input"
+                  className="form-input border d-block mx-auto w-75 p-2"
                   placeholder="******"
                   name="password"
                   type="password"
                   value={formState.password}
                   onChange={handleChange}
                 />
+
                 <button
-                  className="btn btn-block btn-primary"
+                  className="btn btn-block btn-primary d-block mx-auto mt-3"
                   style={{ cursor: 'pointer' }}
                   type="submit"
                 >

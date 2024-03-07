@@ -39,11 +39,15 @@ const Signup = () => {
   };
 
   return (
-    <main className="flex-row justify-center mb-4">
-      <div className="col-12 col-lg-10">
-        <div className="card">
-          <h4 className="card-header bg-dark text-light p-2">Sign Up</h4>
-          <div className="card-body">
+    <main className="flex-row justify-center my-4">
+      
+      <div className="col-6 col-lg-5 mx-auto my-4">
+      
+        <div className="card mt-5">
+      
+          <h4 className="card-header bg-dark text-light p-2 mb-4">Sign Up</h4>
+      
+          <div className="card-body my-4">
             {data ? (
               <p>
                 Success! You may now head{' '}
@@ -51,24 +55,27 @@ const Signup = () => {
               </p>
             ) : (
               <form onSubmit={handleFormSubmit}>
+                <label htmlFor="loginInput" className='form-label loginInput'>Username</label>
                 <input
-                  className="form-input"
-                  placeholder="Your username"
+                  className="form-input border d-block mx-auto w-75 mb-3 p-2"
+                  placeholder="Please enter a username"
                   name="username"
                   type="text"
                   value={formState.name}
                   onChange={handleChange}
                 />
+                <label htmlFor="loginInput" className='form-label loginInput'>Email</label>
                 <input
-                  className="form-input"
-                  placeholder="Your email"
+                  className="form-input border d-block mx-auto w-75 mb-3 p-2"
+                  placeholder="email@email.com"
                   name="email"
                   type="email"
                   value={formState.email}
                   onChange={handleChange}
                 />
+                <label htmlFor="loginInput" className='form-label loginInput'>Password</label>
                 <input
-                  className="form-input"
+                  className="form-input border d-block mx-auto w-75 mb-3 p-2"
                   placeholder="******"
                   name="password"
                   type="password"
@@ -76,7 +83,7 @@ const Signup = () => {
                   onChange={handleChange}
                 />
                 <button
-                  className="btn btn-block btn-primary"
+                  className="btn btn-block btn-primary d-block mx-auto mt-3"
                   style={{ cursor: 'pointer' }}
                   type="submit"
                 >
