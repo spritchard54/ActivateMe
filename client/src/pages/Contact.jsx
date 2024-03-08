@@ -30,10 +30,9 @@ export default function Contact(){
   };
   
   return(
-    <div className="container-fluid w-75">
-      <div className="row">
-        <div className="col-md-6">
-          <h2>Contact Us</h2>
+    <>
+    <div className="container mt-4">
+          <h2 className="mb-4">Contact Us</h2>
           <form onSubmit={handleSubmit}>
             <div className="mb-3">
               <label htmlFor="name" className="form-label">Name:</label>
@@ -65,6 +64,7 @@ export default function Contact(){
               className="form-control"
               id="message"
               name="message"
+              rows="4"
               value={formData.message}
               onChange={handleChange}
               required
@@ -72,8 +72,7 @@ export default function Contact(){
           </div>
           <button type="submit" className="btn btn-primary">Submit</button>
           </form>
-        </div>
-      </div>
     </div>
+    </>
   );
 }
