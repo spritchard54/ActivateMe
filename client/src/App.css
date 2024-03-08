@@ -45,7 +45,36 @@ footer {
   transform: translateY(4px);
 }
 
+.signUpBtn {
+  background-color: #198ed0;
+  color: white;
+  border-radius: 5px;
+  padding: 5px 10px;
+  border: none;
+}
+
+.signUpBtn:hover {
+  background-color: #136B9E;
+}
+
+.signUpBtn:active {
+  transform: translateY(4px);
+}
+
+
 /* Forms */
 .loginInput {
   margin-left: 95px;
+}
+
+.orange {
+  color: #c5601f;
+  font-weight: bold;
+}
+
+/* Image Styles */
+img {
+  display: block;
+  min-height: 250px;
+  margin: auto;
 }
