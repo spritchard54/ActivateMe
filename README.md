@@ -25,12 +25,12 @@ ActivateMe is a collaborative project designed to empower users in tracking thei
 
 **This web application is created with:**
 
-- [React](https://reactjs.org/) - A JavaScript library for building user interfaces.
-- [React Router DOM](https://reactrouter.com/) - Declarative routing for React.
-- [Bootstrap](https://getbootstrap.com/) - A popular CSS framework for building responsive and mobile-first websites.
-- [Apollo Client](https://www.apollographql.com/docs/react/) - A comprehensive state management library for managing GraphQL operations in React applications.
-- [GraphQL](https://graphql.org/) - A query language for your API, and a runtime for executing those queries with your existing data.
-- [JWT Decode](https://github.com/auth0/jwt-decode) - A library for decoding JSON Web Tokens (JWTs).
+[React](https://reactjs.org/) - A JavaScript library for building user interfaces.<br>
+[React Router DOM](https://reactrouter.com/) - Declarative routing for React.<br>
+[Bootstrap](https://getbootstrap.com/) - A popular CSS framework for building responsive and mobile-first websites.<br>
+[Apollo Client](https://www.apollographql.com/docs/react/) - A comprehensive state management library for managing GraphQL operations in React applications.<br>
+[GraphQL](https://graphql.org/) - A query language for your API, and a runtime for executing those queries with your existing data.<br>
+[JWT Decode](https://github.com/auth0/jwt-decode) - A library for decoding JSON Web Tokens (JWTs).<br>
 
 
 ## Usage
@@ -53,11 +53,11 @@ Track your trends and patterns to make informed decisions about your lifestyle a
 
 ## Contributors
 
-1. [Bogdan Tkachuk](https://github.com/aldu1n)
-2. [Thomas Dossman](https://github.com/Dossman-thomas)
-3. [Steve Pritchard](https://github.com/spritchard54)
-4. [Lisa Lar](https://github.com/ayoleese)
-5. [Tucker McKee](https://github.com/McKee-T)
+1. [Bogdan Tkachuk](https://github.com/aldu1n) - Backend Developer
+2. [Thomas Dossman](https://github.com/Dossman-thomas) - Frontend Developer
+3. [Steve Pritchard](https://github.com/spritchard54) - Project Initiator/Fullstack Developer
+4. [Lisa Lar](https://github.com/ayoleese) - Frontend Developer
+5. [Tucker McKee](https://github.com/McKee-T) - Backend Developer
 
 ## License
 
