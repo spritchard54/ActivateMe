@@ -6,8 +6,6 @@ const categorySchema = new Schema({
         required: true,
         trim: true,
     },
-    // add activities reference
-    // activities: [Activity]
 });
 
 const Category = model('category', categorySchema);
