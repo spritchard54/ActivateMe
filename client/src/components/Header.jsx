@@ -20,9 +20,17 @@ export default function Header() {
     <>
       <header className="container-fluid header d-flex align-items-center">
         <nav className="navbar d-flex justify-content-between align-items-center">
-          <Link to={"/"} className="navbar-brand ms-4">
-            <h1 id="dev-name">ActivateMe.</h1>
-          </Link>
+          {Auth.loggedIn() ? (
+            <>
+              <Link to={"/dashboard"} className="navbar-brand ms-4">
+                <h1 id="dev-name">ActivateMe.</h1>
+              </Link>
+            </>
+          ) : (
+            <Link to={"/"} className="navbar-brand ms-4">
+              <h1 id="dev-name">ActivateMe.</h1>
+            </Link>
+          )}
           {Auth.loggedIn() ? (
             <>
               {/* <Link to={"/"} className="nav-link">
