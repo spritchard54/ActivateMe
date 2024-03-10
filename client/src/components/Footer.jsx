@@ -1,12 +1,21 @@
 import { Link } from "react-router-dom";
+import Auth from "../utils/auth";
 
 export default function Footer() {
   return (
     <>
       <footer className="container-fluid d-flex align-items-center justify-content-around">
-        <Link to={"/dashboard"} className="nav-link">
-          <p className="text">Home</p>
-        </Link>
+        {Auth.loggedIn() ? (
+          <>
+            <Link to={"/dashboard"} className="nav-link">
+              <p className="text">Home</p>
+            </Link>
+          </>
+        ) : (
+          <Link to={"/"} className="nav-link">
+              <p className="text">Home</p>
+            </Link>
+        )}
         <Link to={"/contact"} className="nav-link">
           <p className="text">Contact Us</p>
         </Link>
