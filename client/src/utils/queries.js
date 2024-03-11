@@ -20,3 +20,12 @@ export const QUERY_ME = gql`
       }
   }
 `;
+
+export const GET_ACTIVITYTYPE = gql`
+query {
+  activityTypes {
+    _id
+    actName
+  }
+}
+`;
