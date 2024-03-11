@@ -1,12 +1,10 @@
 import React, { useState } from 'react';
-import { useNavigate } from "react-router-dom";
-import { Navigate, useParams } from "react-router-dom";
-import { useQuery } from "@apollo/client";
-import { QUERY_USER, QUERY_ME } from "../utils/queries";
+import { useNavigate, useParams } from "react-router-dom";
+import { QUERY_USER, QUERY_ME, GET_ACTIVITYTYPE } from "../utils/queries";
+import { useQuery } from "@apollo/client"; // Import gql from @apollo/client
 import Auth from "../utils/auth";
 
 export default function LogActivity() {
-  
   const { username: userParam } = useParams();
   const { loading, data } = useQuery(userParam ? QUERY_USER : QUERY_ME, {
     variables: { username: userParam },
@@ -32,12 +30,7 @@ export default function LogActivity() {
       </div>
     );
   }
-  
-  
-  
-  
-  
-  
+
   // State to manage form data
   const [formData, setFormData] = useState({
     when: '',
@@ -46,6 +39,8 @@ export default function LogActivity() {
     duration: '',
     comments: '',
   });
+  
+  const { loading: activityTypesLoading, data: activityTypesData } = useQuery(GET_ACTIVITYTYPE);
 
   // Function to handle form input changes
   const handleInputChange = (e) => {
@@ -87,12 +82,10 @@ export default function LogActivity() {
           <div className="mb-3">
             <label htmlFor="activity" className="form-label">Select an activity</label>
             <select className="form-select" id="activity" name="activity" onChange={handleInputChange} value={formData.activity} required>
-              {/* Add options for activities based on the selected category */}
-              {/* Example options for exercise category */}
-              <option value="">Choose...</option>
-              <option value="running">Running</option>
-              <option value="cycling">Cycling</option>
-              {/* Add more options as needed */}
+              {/* Map over activity types data to generate options */}
+              {activityTypesData && activityTypesData.activityTypes.map(activityType => (
+                <option key={activityType.id} value={activityType.actName}>{activityType.actName}</option>
+              ))}
             </select>
           </div>
 
