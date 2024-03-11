@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { useNavigate, useParams } from "react-router-dom";
+import { useState } from 'react';
+import { useNavigate, useParams, useParams, Link } from "react-router-dom";
 import { QUERY_USER, QUERY_ME, GET_ACTIVITYTYPE } from "../utils/queries";
 import { useQuery } from "@apollo/client"; // Import gql from @apollo/client
 import Auth from "../utils/auth";
@@ -33,11 +33,11 @@ export default function LogActivity() {
 
   // State to manage form data
   const [formData, setFormData] = useState({
-    when: '',
-    category: '',
-    activity: '',
-    duration: '',
-    comments: '',
+    when: "",
+    category: "",
+    activity: "",
+    duration: "",
+    comments: "",
   });
   
   const { loading: activityTypesLoading, data: activityTypesData } = useQuery(GET_ACTIVITYTYPE);
@@ -55,7 +55,7 @@ export default function LogActivity() {
   const handleSubmit = (e) => {
     e.preventDefault();
     // Add logic to handle form submission (e.g., logging activity)
-    console.log('Form submitted:', formData);
+    console.log("Form submitted:", formData);
   };
 
   return (
@@ -64,13 +64,32 @@ export default function LogActivity() {
         <h2 className="mb-4">Log New Activity</h2>
         <form onSubmit={handleSubmit}>
           <div className="mb-3">
-            <label htmlFor="when" className="form-label">When did you complete this activity?</label>
-            <input type="text" className="form-control" id="when" name="when" onChange={handleInputChange} value={formData.when} required />
+            <label htmlFor="when" className="form-label">
+              When did you complete this activity?
+            </label>
+            <input
+              type="text"
+              className="form-control"
+              id="when"
+              name="when"
+              onChange={handleInputChange}
+              value={formData.when}
+              required
+            />
           </div>
 
           <div className="mb-3">
-            <label htmlFor="category" className="form-label">Select a category</label>
-            <select className="form-select" id="category" name="category" onChange={handleInputChange} value={formData.category} required>
+            <label htmlFor="category" className="form-label">
+              Select a category
+            </label>
+            <select
+              className="form-select"
+              id="category"
+              name="category"
+              onChange={handleInputChange}
+              value={formData.category}
+              required
+            >
               {/* Add options for categories */}
               <option value="">Choose...</option>
               <option value="exercise">Exercise</option>
@@ -90,13 +109,32 @@ export default function LogActivity() {
           </div>
 
           <div className="mb-3">
-            <label htmlFor="duration" className="form-label">How long did you perform this activity (enter time in hours)?</label>
-            <input type="text" className="form-control" id="duration" name="duration" onChange={handleInputChange} value={formData.duration} required />
+            <label htmlFor="duration" className="form-label">
+              How long did you perform this activity (enter time in hours)?
+            </label>
+            <input
+              type="text"
+              className="form-control"
+              id="duration"
+              name="duration"
+              onChange={handleInputChange}
+              value={formData.duration}
+              required
+            />
           </div>
 
           <div className="mb-3">
-            <label htmlFor="comments" className="form-label">Anything memorable about this activity?</label>
-            <textarea className="form-control" id="comments" name="comments" rows="4" onChange={handleInputChange} value={formData.comments}></textarea>
+            <label htmlFor="comments" className="form-label">
+              Anything memorable about this activity?
+            </label>
+            <textarea
+              className="form-control"
+              id="comments"
+              name="comments"
+              rows="4"
+              onChange={handleInputChange}
+              value={formData.comments}
+            ></textarea>
           </div>
 
           <button type="submit" className="btn btn-primary">
