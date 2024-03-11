@@ -1,7 +1,6 @@
-import React, { useState } from "react";
-
 // import { useNavigate } from "react-router-dom";
-import { Navigate, useParams } from "react-router-dom";
+import { useState } from "react";
+import { Navigate, useParams, Link } from "react-router-dom";
 import { useQuery } from "@apollo/client";
 import { QUERY_USER, QUERY_ME } from "../utils/queries";
 import Auth from "../utils/auth";
@@ -101,6 +100,9 @@ export default function LogActivity() {
           <div className="mb-3">
             <label htmlFor="activity" className="form-label">
               Select an activity
+            </label>
+            <label className="float-end">
+              <Link to={"/create-activity"}>Create a new Activity Type</Link>
             </label>
             <select
               className="form-select"
