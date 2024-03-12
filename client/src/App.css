@@ -34,6 +34,9 @@ header {
   color: var(--btns);
 }
 
+#homeLogin {
+  margin-right: 30px;
+}
 
 /* Footer Styles */
 
@@ -45,10 +48,11 @@ footer {
 }
 
 #recActivities {
-  background-color: var(--btns);
+  background-color: var(--hghlght);
   color: white;
   border-radius: 8px;
   font-weight: bold;
+  padding: 9px 10px;
 }
 
 /* Buttons */
@@ -59,7 +63,7 @@ footer {
   border-radius: 5px;
   padding: 5px 10px;
   border: none;
-  margin-right: 30px;
+
 }
 
 .logout-btn {
