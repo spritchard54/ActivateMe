@@ -35,7 +35,7 @@ export default function ActivityLog() {
     <div className="container-fluid w-75 mt-4">
       <h2>Activity Log</h2>
       <div className="row">
-        <table className="table w-75 m-5">
+        <table className="table ms-4">
           <thead>
             <th scope="col">Date</th>
             <th scope="col">Category</th>
@@ -45,13 +45,13 @@ export default function ActivityLog() {
           </thead>
           <tbody>
             <tr>
-              <th scope="row"></th>
-              <td>Meals</td>
-              <td>4/10/2024</td>
-              <td>4/11/2024</td>
+              {/* <td>{{createdDate}}</td> */}
+              {/* <td>{{Category}}</td> */}
+              {/* <td>{{activityType}}</td> */}
+              {/* <td>{{duration}}</td> */}
+              {/* <td>{{commentText}}</td> */}
             </tr>
           </tbody>
-
         </table>
       </div>
     </div>
