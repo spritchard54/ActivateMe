@@ -11,6 +11,10 @@ const resolvers = {
     }
     throw AuthenticationError;
   },
+  users: async (parent, args, context) => {
+    const userData = await User.find({});
+    return userData;
+  },
   // Query to fetch all Categories
   categories: async () => {
     return await Category.find({});
