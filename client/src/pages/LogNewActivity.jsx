@@ -100,9 +100,11 @@ export default function LogActivity() {
 
           <div className="mb-3">
             <label htmlFor="activity" className="form-label">Select an activity</label>
+
             <label htmlFor="activity" className="form-label float-end">
               <Link to="/create-activity">Create a new Activity</Link>
             </label>
+
             <select className="form-select" id="activity" name="activity" onChange={handleInputChange} value={formData.activity} required>
               {/* Map over activity types data to generate options */}
               {activityTypesData && activityTypesData.activityTypes.map(activityType => (
