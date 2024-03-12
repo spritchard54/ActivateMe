@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useNavigate, useParams, useParams, Link } from "react-router-dom";
+import { useNavigate, useParams, Link } from "react-router-dom";
 import { QUERY_USER, QUERY_ME, GET_ACTIVITYTYPE } from "../utils/queries";
 import { useQuery } from "@apollo/client"; // Import gql from @apollo/client
 import Auth from "../utils/auth";
