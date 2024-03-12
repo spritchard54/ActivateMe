@@ -1,8 +1,20 @@
+/* Set color scheme */
+:root {
+  --bckgnd: #111111;
+  --hghlght: #91F36F;
+  --btns: #1A8ED0;
+  --gry: #dfdfdf;
+  --whte: #ffffff;
+}
+
 /* Reset default browser styles */
 body,
 h1,
 h2,
 h3,
+h4,
+h5,
+h6,
 p,
 ul,
 ol,
@@ -24,6 +36,10 @@ hr {
   border: 0;
 }
 
+* {
+  font-family: 'inter';
+}
+
 /* Box sizing */
 html {
   box-sizing: border-box;
@@ -41,6 +57,7 @@ body {
   font-size: 16px;
   line-height: 1.6;
   color: #333; /* Default text color */
+  background-color: var(--bckgnd);
 }
 
 /* Links */
@@ -63,6 +80,8 @@ body {
   display: flex;
   flex-direction: column;
 }
+
+
 
 /* #root {
   flex: 1;
