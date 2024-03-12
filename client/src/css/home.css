@@ -1,0 +1,16 @@
+body {
+  background-image: url('../assets/images/homePage.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  background-attachment: fixed;
+}
+
+.home-box {
+  background-color: rgba(0, 0, 0, 0.863);
+  color: var(--whte);
+  padding: 80px 40px;
+  border-radius: 20px;
+}
+
+
