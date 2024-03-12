@@ -10,10 +10,16 @@ import '../css/dash.css';
 const Dashboard = () => {
 
   let navigate = useNavigate();
+
   const logButton = () => {
     let path = `/log-activity`;
     navigate(path);
   };
+
+  const viewActivityLog = () => {
+    let path = `/activity-log`;
+    navigate(path);
+  }
 
   const { username: userParam } = useParams();
   const { loading, data } = useQuery(userParam ? QUERY_USER : QUERY_ME, {
@@ -52,9 +58,16 @@ const Dashboard = () => {
           <h2 className="white-text">Dashboard</h2>
 
 
-          <button onClick={logButton} className="logAct">
-            Log Activity
-          </button>
+          <div className="d-flex align-items-center gap-3">
+
+            <button onClick={logButton} className="logAct">
+              Log Activity
+            </button>
+
+            <button onClick={viewActivityLog} className=" logAct">View Activities</button>
+
+          </div>
+
 
         </div>
 
@@ -65,20 +78,31 @@ const Dashboard = () => {
         </div>
 
         <div className="container p-1">
+
           <h4 id="recActivities" className="my-3 py-1 text-black">
             Recent Activities
           </h4>
-          <div className="card p-4 bg-dark">
-            <p className="text-white">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestiae
-              voluptates tenetur excepturi facilis animi labore, facere beatae
-              reprehenderit odit esse a odio veniam at? Voluptatibus, laboriosam?
-              Accusantium quae voluptatibus sunt. Lorem ipsum, dolor sit amet
-              consectetur adipisicing elit. Modi dolorem accusantium consequuntur
-              magnam a, optio hic illum placeat tempora dignissimos ullam nobis
-              magni cupiditate voluptatum quibusdam qui, dolor omnis veniam!
-            </p>
-          </div>
+          <table className="table-dark  activities-table">
+            <thead>
+              <tr>
+                <th scope="col">Date</th>
+                <th scope="col">Category</th>
+                <th scope="col">Activity</th>
+                <th scope="col">Duration</th>
+                <th scope="col">Comments</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>4/10/2024</td>
+                <td>Meals</td>
+                <td>Dinner</td>
+                <td>1</td>
+                <td>Made chicken parm tn. mmmm.</td>
+              </tr>
+            </tbody>
+          </table>
+
         </div>
 
       </div>
