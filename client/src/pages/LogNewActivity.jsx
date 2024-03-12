@@ -1,8 +1,7 @@
-// import { useNavigate } from "react-router-dom";
-import { useState } from "react";
-import { Navigate, useParams, Link } from "react-router-dom";
-import { useQuery } from "@apollo/client";
-import { QUERY_USER, QUERY_ME } from "../utils/queries";
+import { useState } from 'react';
+import { useNavigate, useParams, Link } from "react-router-dom";
+import { QUERY_USER, QUERY_ME, GET_ACTIVITYTYPE } from "../utils/queries";
+import { useQuery } from "@apollo/client"; // Import gql from @apollo/client
 import Auth from "../utils/auth";
 
 export default function LogActivity() {
@@ -40,6 +39,8 @@ export default function LogActivity() {
     duration: "",
     comments: "",
   });
+  
+  const { loading: activityTypesLoading, data: activityTypesData } = useQuery(GET_ACTIVITYTYPE);
 
   // Function to handle form input changes
   const handleInputChange = (e) => {
@@ -98,26 +99,15 @@ export default function LogActivity() {
           </div>
 
           <div className="mb-3">
-            <label htmlFor="activity" className="form-label">
-              Select an activity
+            <label htmlFor="activity" className="form-label">Select an activity</label>
+            <label htmlFor="activity" className="form-label float-end">
+              <Link to="/create-activity">Create a new Activity</Link>
             </label>
-            <label className="float-end">
-              <Link to={"/create-activity"}>Create a new Activity Type</Link>
-            </label>
-            <select
-              className="form-select"
-              id="activity"
-              name="activity"
-              onChange={handleInputChange}
-              value={formData.activity}
-              required
-            >
-              {/* Add options for activities based on the selected category */}
-              {/* Example options for exercise category */}
-              <option value="">Choose...</option>
-              <option value="running">Running</option>
-              <option value="cycling">Cycling</option>
-              {/* Add more options as needed */}
+            <select className="form-select" id="activity" name="activity" onChange={handleInputChange} value={formData.activity} required>
+              {/* Map over activity types data to generate options */}
+              {activityTypesData && activityTypesData.activityTypes.map(activityType => (
+                <option key={activityType.id} value={activityType.actName}>{activityType.actName}</option>
+              ))}
             </select>
           </div>
 

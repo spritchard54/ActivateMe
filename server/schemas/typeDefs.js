@@ -22,7 +22,7 @@ const typeDefs = `
 
     type ActivityType {
         _id: ID
-        actname: String
+        actName: String
         user: User
     }
 
