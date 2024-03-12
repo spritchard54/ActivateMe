@@ -33,26 +33,34 @@ export default function ActivityLog() {
 
   return (
     <div className="container-fluid w-75 mt-4">
-      <h2>Activity Log</h2>
-      <div className="row">
-        <table className="table w-75 m-5">
+
+      <div className="container p-1">
+
+        <h2 id="recActivities" className="my-3 py-1 text-black">
+          Activity Log
+        </h2>
+        
+        <table className="table-dark  activities-table">
           <thead>
-            <th scope="col">Date</th>
-            <th scope="col">Category</th>
-            <th scope="col">Activity</th>
-            <th scope="col">Duration</th>
-            <th scope="col">Comments</th>
+            <tr>
+              <th scope="col">Date</th>
+              <th scope="col">Category</th>
+              <th scope="col">Activity</th>
+              <th scope="col">Duration</th>
+              <th scope="col">Comments</th>
+            </tr>
           </thead>
           <tbody>
             <tr>
-              <th scope="row"></th>
-              <td>Meals</td>
               <td>4/10/2024</td>
-              <td>4/11/2024</td>
+              <td>Meals</td>
+              <td>Dinner</td>
+              <td>1</td>
+              <td>Made chicken parm tn. mmmm.</td>
             </tr>
           </tbody>
-
         </table>
+
       </div>
     </div>
   );
