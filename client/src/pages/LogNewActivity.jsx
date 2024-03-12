@@ -41,8 +41,7 @@ export default function LogActivity() {
   });
   
   const { loading: activityTypesLoading, data: activityTypesData } = useQuery(GET_ACTIVITYTYPE);
-  
-  const { loading: activityTypesLoading, data: activityTypesData } = useQuery(GET_ACTIVITYTYPE);
+
 
   // Function to handle form input changes
   const handleInputChange = (e) => {
