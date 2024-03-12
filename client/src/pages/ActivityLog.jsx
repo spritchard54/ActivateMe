@@ -57,6 +57,11 @@ export default function ActivityLog() {
               <td>Dinner</td>
               <td>1</td>
               <td>Made chicken parm tn. mmmm.</td>
+              {/* <td>{{createdDate}}</td> */}
+              {/* <td>{{Category}}</td> */}
+              {/* <td>{{activityType}}</td> */}
+              {/* <td>{{duration}}</td> */}
+              {/* <td>{{commentText}}</td> */}
             </tr>
           </tbody>
         </table>
