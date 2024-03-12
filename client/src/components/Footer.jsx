@@ -13,8 +13,8 @@ export default function Footer() {
           </>
         ) : (
           <Link to={"/"} className="nav-link">
-              <p className="text">Home</p>
-            </Link>
+            <p className="text">Home</p>
+          </Link>
         )}
         <Link to={"/contact"} className="nav-link">
           <p className="text">Contact Us</p>
@@ -22,9 +22,14 @@ export default function Footer() {
         <Link to={"/about"} className="nav-link">
           <p className="text">About Us</p>
         </Link>
-        <Link to={"/signup"} className="nav-link">
-          <p className="text">Sign Up</p>
-        </Link>
+        {Auth.loggedIn() ? (
+          <>
+          </>
+        ) : (
+          <Link to={"/signup"} className="nav-link">
+            <p className="text">Sign Up</p>
+          </Link>
+        )}
       </footer>
     </>
   );
