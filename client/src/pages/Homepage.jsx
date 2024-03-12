@@ -3,8 +3,9 @@ import '../css/home.css'
 export default function Home() {
 
   return (
+    <>
 
-    <div className="container-fluid w-75 mt-5 mb-5 p-5 d-flex justify-content-center align-items-center">
+      <div className="container-fluid w-75 mt-5 p-5 d-flex justify-content-center align-items-center">
 
         <div className="col d-flex flex-column text-center home-box">
           <h1 className="fw-bold mb-3">Track<span className="green-title">.</span>Learn<span className="green-title">.</span>Improve</h1>
@@ -14,11 +15,13 @@ export default function Home() {
           <a href={'/signup'}>
             <button className="mx-auto  d-block px-3 signUpBtn">Sign Up</button>
           </a>
+
         </div>
 
-      
+      </div>
 
-    </div>
+
+    </>
 
   )
 

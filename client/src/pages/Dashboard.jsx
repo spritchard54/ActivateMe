@@ -5,7 +5,10 @@ import { useQuery } from "@apollo/client";
 import { QUERY_USER, QUERY_ME } from "../utils/queries";
 import Auth from "../utils/auth";
 
+import '../css/dash.css';
+
 const Dashboard = () => {
+
   let navigate = useNavigate();
   const logButton = () => {
     let path = `/log-activity`;
@@ -42,7 +45,7 @@ const Dashboard = () => {
     <div className="container-fluid w-75">
       <div className="row mt-5">
         <div className="col">
-          <h2 className="my-3">Dashboard</h2>
+          <h2 className="my-3 white-text">Dashboard</h2>
         </div>
         <div className="col">
           <button onClick={logButton} className="my-3 logAct">
