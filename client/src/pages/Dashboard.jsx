@@ -10,10 +10,16 @@ import '../css/dash.css';
 const Dashboard = () => {
 
   let navigate = useNavigate();
+
   const logButton = () => {
     let path = `/log-activity`;
     navigate(path);
   };
+
+  const viewActivityLog = () => {
+    let path = `/activity-log`;
+    navigate(path);
+  }
 
   const { username: userParam } = useParams();
   const { loading, data } = useQuery(userParam ? QUERY_USER : QUERY_ME, {
@@ -42,40 +48,65 @@ const Dashboard = () => {
   }
 
   return (
-    <div className="container-fluid w-75">
-      <div className="row mt-5">
-        <div className="col">
-          <h2 className="my-3 white-text">Dashboard</h2>
+
+    <div className="container-fluid d-flex justify-content-center align-items-center my-5">
+
+      <div className="container sub-form p-5 my-5">
+
+        <div className="d-flex justify-content-between align-items-center">
+
+          <h2 className="white-text">Dashboard</h2>
+
+
+          <div className="d-flex align-items-center gap-3">
+
+            <button onClick={logButton} className="logAct">
+              Log Activity
+            </button>
+
+            <button onClick={viewActivityLog} className=" logAct">View Activities</button>
+
+          </div>
+
+
         </div>
-        <div className="col">
-          <button onClick={logButton} className="my-3 logAct">
-            Log Activity
-          </button>
+
+        <div className="container mt-2 py-5 d-flex justify-content-around align-items-center">
+          <div className="text-light">Daily Breakdown</div>
+          <div className="text-light">Weekly Breakdown</div>
+          <div className="text-light">Monthly Breakdown</div>
         </div>
+
+        <div className="container p-1">
+
+          <h4 id="recActivities" className="my-3 py-1 text-black">
+            Recent Activities
+          </h4>
+          <table className="table-dark  activities-table">
+            <thead>
+              <tr>
+                <th scope="col">Date</th>
+                <th scope="col">Category</th>
+                <th scope="col">Activity</th>
+                <th scope="col">Duration</th>
+                <th scope="col">Comments</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>4/10/2024</td>
+                <td>Meals</td>
+                <td>Dinner</td>
+                <td>1</td>
+                <td>Made chicken parm tn. mmmm.</td>
+              </tr>
+            </tbody>
+          </table>
+
+        </div>
+
       </div>
 
-      <div className="row mt-2 py-5">
-        <div className="col">Daily Breakdown</div>
-        <div className="col">Weekly Breakdown</div>
-        <div className="col">Monthly Breakdown</div>
-      </div>
-
-      <div className="row">
-        <h4 id="recActivities" className="my-3 py-1">
-          Recent Activities
-        </h4>
-        <div className="card p-5">
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestiae
-            voluptates tenetur excepturi facilis animi labore, facere beatae
-            reprehenderit odit esse a odio veniam at? Voluptatibus, laboriosam?
-            Accusantium quae voluptatibus sunt. Lorem ipsum, dolor sit amet
-            consectetur adipisicing elit. Modi dolorem accusantium consequuntur
-            magnam a, optio hic illum placeat tempora dignissimos ullam nobis
-            magni cupiditate voluptatum quibusdam qui, dolor omnis veniam!
-          </p>
-        </div>
-      </div>
     </div>
   );
 };
