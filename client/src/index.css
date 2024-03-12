@@ -1,8 +1,20 @@
+/* Set color scheme */
+:root {
+  --bckgnd: #1B1B1B;
+  --hghlght: #91F36F;
+  --btns: #1A8ED0;
+  --gry: #dfdfdf;
+  --whte: #ffffff;
+}
+
 /* Reset default browser styles */
 body,
 h1,
 h2,
 h3,
+h4,
+h5,
+h6,
 p,
 ul,
 ol,
@@ -22,6 +34,10 @@ hr {
   margin: 0;
   padding: 0;
   border: 0;
+}
+
+* {
+  font-family: 'inter';
 }
 
 /* Box sizing */
@@ -63,6 +79,8 @@ body {
   display: flex;
   flex-direction: column;
 }
+
+
 
 /* #root {
   flex: 1;
