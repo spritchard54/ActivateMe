@@ -35,9 +35,24 @@ export default function ActivityLog() {
     <div className="container-fluid w-75 mt-4">
       <h2>Activity Log</h2>
       <div className="row">
-        <p className="my-4">
-          This should contain a table that displays all data from the activty log. This is different from the dashboard where we only see the 5-10 most recent activities.
-        </p>
+        <table className="table w-75 m-5">
+          <thead>
+            <th scope="col">Date</th>
+            <th scope="col">Category</th>
+            <th scope="col">Activity</th>
+            <th scope="col">Duration</th>
+            <th scope="col">Comments</th>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row"></th>
+              <td>Meals</td>
+              <td>4/10/2024</td>
+              <td>4/11/2024</td>
+            </tr>
+          </tbody>
+
+        </table>
       </div>
     </div>
   );
