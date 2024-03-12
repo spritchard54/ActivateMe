@@ -57,7 +57,7 @@ export default function Header() {
                 <Link to={"/dashboard"} className="nav-link">
                   <p className="text">Dashboard</p>
                 </Link>
-                <Link to={"/actvity-log"} className="nav-link">
+                <Link to={"/activity-log"} className="nav-link">
                   <p className="text">Activity Log</p>
                 </Link>
                 <Link to={"/log-activity"} className="nav-link">
