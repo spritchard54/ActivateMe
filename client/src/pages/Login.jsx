@@ -63,6 +63,7 @@ const Login = (props) => {
               <form onSubmit={handleFormSubmit}>
 
                 <div className='form-box p-3'>
+                  
                   <label htmlFor="loginInput" className='form-label login-input'>Username</label>
 
                   <input
@@ -109,7 +110,7 @@ const Login = (props) => {
         </div>
       </div>
 
-      <div className='container d-flex justify-content-center gap-3'>
+      <div className='container d-flex justify-content-center gap-2'>
         <p className='text-light'>Not a member?</p>
         <a className="green-title" href='/signup'>Sign up!</a>
       </div>

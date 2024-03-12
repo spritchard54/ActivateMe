@@ -72,6 +72,7 @@ export default function Header() {
               
             </>
           ) : (
+            // <div></div>
             <button onClick={homeLogin} id="homeLogin" className="logAct">
               Log In
             </button>
