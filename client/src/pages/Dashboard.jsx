@@ -72,9 +72,11 @@ const Dashboard = () => {
         </div>
 
         <div className="container mt-2 py-5 d-flex justify-content-around align-items-center">
+
           <div className="text-light">Daily Breakdown</div>
           <div className="text-light">Weekly Breakdown</div>
           <div className="text-light">Monthly Breakdown</div>
+          
         </div>
 
         <div className="container p-1">
@@ -82,6 +84,7 @@ const Dashboard = () => {
           <h4 id="recActivities" className="my-3 py-1 text-black">
             Recent Activities
           </h4>
+
           <table className="table-dark  activities-table">
             <thead>
               <tr>
