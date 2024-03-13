@@ -7,7 +7,7 @@ export default function AboutUs() {
         <div className="d-flex justify-content-between align-items-center">
           <h2 className="green-title">About Page</h2>
         </div>
-        <p className="mt-3 ms-3">
+        <p className="mt-3 ms-3 me-3">
           Background ActivateMe is the result of a group project completed during
           the ‘23-’24 Winter/Spring Univeristy of Pennsylvania Full Stack Web
           Development Boot-camp. This project was developed using MongoDB,
@@ -15,7 +15,6 @@ export default function AboutUs() {
         </p>
         <h2 className="green-title mt-4">Project Contributors</h2>
         <ul className="mt-3 ms-5">
-          <li>Bogdan Tkachuk</li>
           <li>Bogdan Tkachuk</li>
           <li>Lisa Lar</li>
           <li>Steve Pritchard</li>
