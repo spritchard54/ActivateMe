@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 import { Navigate, useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
-import {QUERY_USER, QUERY_ME} from "../utils/queries"
+import { QUERY_USER, QUERY_ME } from "../utils/queries"
 import Auth from '../utils/auth';
 
 export default function CreateActivity() {
@@ -24,19 +24,20 @@ export default function CreateActivity() {
 
   if (!user?.username) {
     return (
+
       <div className='container-fluid w-75 my-5 text-center'>
-      <h4>
-        You need to be logged in to see this. Use the navigation links above to
-        sign up or log in!
-      </h4>
+
+        <h4>
+          You need to be logged in to see this. Use the navigation links above to
+          sign up or log in!
+        </h4>
+
       </div>
+
     );
   }
 
 
-
-
-  
   // State to manage form data
   const [formData, setFormData] = useState({
     category: '',
@@ -66,12 +67,22 @@ export default function CreateActivity() {
 
   return (
     <>
-      <div className="container mt-4">
-        <h2 className="mb-4">Create New Activity</h2>
-        <div className="d-flex justify-content-center">
-          <form onSubmit={handleSubmit} className="w-50">
+      <div className="container my-5 w-50">
+
+        <div className="container sub-form p-5">
+
+          <h2 className="mb-4">
+            Create New Activity
+          </h2>
+
+          <form onSubmit={handleSubmit}>
+
             <div className="mb-3">
-              <label htmlFor="category" className="form-label">Select a category</label>
+
+              <label htmlFor="category" className="form-label green-title">
+                Select a category
+              </label>
+
               <select
                 className="form-select"
                 id="category"
@@ -80,16 +91,32 @@ export default function CreateActivity() {
                 value={formData.category}
                 required
               >
+
                 {/* Add options for categories */}
-                <option value="">Choose...</option>
-                <option value="exercise">Exercise</option>
-                <option value="work">Work</option>
+                <option value="">
+                  Choose...
+                </option>
+
+                <option value="exercise">
+                  Exercise
+                </option>
+
+                <option value="work">
+                  Work
+                </option>
+
                 {/* Add more options as needed */}
+
               </select>
+
             </div>
 
             <div className="mb-3">
-              <label htmlFor="activityName" className="form-label">Enter the name of the new activity</label>
+
+              <label htmlFor="activityName" className="form-label green-title">
+                Enter the name of the new activity
+              </label>
+
               <input
                 type="text"
                 className="form-control"
@@ -99,10 +126,15 @@ export default function CreateActivity() {
                 value={formData.activityName}
                 required
               />
+
             </div>
 
-            <button type="submit" className="btn btn-primary">Create</button>
+            <button type="submit" className="btn btn-primary submit-btn mt-2">
+              Create
+            </button>
+
           </form>
+
         </div>
       </div>
     </>
