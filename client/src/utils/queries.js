@@ -21,8 +21,17 @@ export const QUERY_ME = gql`
   }
 `;
 
+export const GET_CATEGORIES = gql`
+  query GetCategories {
+    categories {
+      _id
+      catName
+    }
+  }
+`;
+
 export const GET_ACTIVITYTYPE = gql`
-query {
+query activityTypes {
   activityTypes {
     _id
     actName
