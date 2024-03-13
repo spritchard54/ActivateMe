@@ -5,10 +5,122 @@ import { useQuery } from "@apollo/client";
 import { QUERY_USER, QUERY_ME } from "../utils/queries";
 import Auth from "../utils/auth";
 
-import '../css/dash.css';
+import "../css/dash.css";
+
+import QuickChart from "quickchart-js";
+import { Chart } from "chart.js";
+import ChartDataLabels from "chartjs-plugin-datalabels";
+
+Chart.register(ChartDataLabels);
+
+const myChart = new QuickChart();
+myChart.setWidth(200).setHeight(200).setBackgroundColor("transparent");
+myChart.setConfig({
+  type: "doughnut",
+  data: {
+    labels: ["Work", "Meals", "Sleep", "Exercise", "Mindfulness"],
+    datasets: [
+      {
+        label: "Catgeory",
+        data: [8, 1, 2, 2, 4],
+      },
+    ],
+  },
+  options: {
+    legend: {
+      display: true,
+      labels: {
+        fontSize: 7,
+        fontColor: "white",
+        boxWidth: 15,
+      },
+    },
+    title: {
+      display: true,
+      text: "Today",
+      fontColor: "#ffffff",
+    },
+    plugins: {
+      datalabels: {
+        color: "white",
+      },
+    },
+  },
+});
+
+const myChartTwo = new QuickChart();
+myChartTwo.setWidth(200).setHeight(200).setBackgroundColor("transparent");
+myChartTwo.setConfig({
+  type: "doughnut",
+  data: {
+    labels: ["Work", "Meals", "Sleep", "Exercise", "Mindfulness"],
+    datasets: [
+      {
+        label: "Catgeory",
+        data: [4, 4, 4, 2, 4],
+      },
+    ],
+  },
+  options: {
+    legend: {
+      display: true,
+      labels: {
+        fontSize: 7,
+        fontColor: "white",
+        boxWidth: 15,
+      },
+    },
+    title: {
+      display: true,
+      text: "Weekly",
+      fontColor: "#ffffff",
+    },
+    plugins: {
+      datalabels: {
+        color: "white",
+      },
+    },
+  },
+});
+
+const myChartThree = new QuickChart();
+myChartThree.setWidth(200).setHeight(200).setBackgroundColor("transparent");
+myChartThree.setConfig({
+  type: "doughnut",
+  data: {
+    labels: ["Work", "Meals", "Sleep", "Exercise", "Mindfulness"],
+    datasets: [
+      {
+        label: "Catgeory",
+        data: [160, 93, 240, 28, 4],
+      },
+    ],
+  },
+  options: {
+    legend: {
+      display: true,
+      labels: {
+        fontSize: 7,
+        fontColor: "white",
+        boxWidth: 15,
+      },
+    },
+    title: {
+      display: true,
+      text: "Monthly",
+      fontColor: "#ffffff",
+    },
+    plugins: {
+      datalabels: {
+        color: "white",
+      },
+    },
+  },
+});
+
+// console.log(myChart.getUrl());
 
 const Dashboard = () => {
-
   let navigate = useNavigate();
 
   const logButton = () => {
@@ -19,7 +131,7 @@ const Dashboard = () => {
   const viewActivityLog = () => {
     let path = `/activity-log`;
     navigate(path);
-  }
+  };
 
   const { username: userParam } = useParams();
   const { loading, data } = useQuery(userParam ? QUERY_USER : QUERY_ME, {
@@ -48,40 +160,39 @@ const Dashboard = () => {
   }
 
   return (
-
     <div className="container-fluid d-flex justify-content-center align-items-center my-5">
-
       <div className="container sub-form p-5 my-5">
-
         <div className="d-flex justify-content-between align-items-center">
-
           <h2 className="white-text">Dashboard</h2>
 
-
           <div className="d-flex align-items-center gap-3">
-
             <button onClick={logButton} className="logAct">
               Log Activity
             </button>
 
-            <button onClick={viewActivityLog} className=" logAct">View Activities</button>
-
+            <button onClick={viewActivityLog} className=" logAct">
+              View Activities
+            </button>
           </div>
-
-
         </div>
 
         <div className="container mt-2 py-5 d-flex justify-content-around align-items-center">
-          <div className="text-light">Daily Breakdown</div>
-          <div className="text-light">Weekly Breakdown</div>
-          <div className="text-light">Monthly Breakdown</div>
+          <div className="text-light">
+            <img src={myChart.getUrl()} />
+          </div>
+          <div className="text-light">
+          <img src={myChartTwo.getUrl()} />
+          </div>
+          <div className="text-light">
+          <img src={myChartThree.getUrl()} />
+          </div>
         </div>
 
         <div className="container p-1">
-
           <h4 id="recActivities" className="my-3 py-1 text-black">
             Recent Activities
           </h4>
+
           <table className="table-dark  activities-table">
             <thead>
               <tr>
@@ -102,11 +213,8 @@ const Dashboard = () => {
               </tr>
             </tbody>
           </table>
-
         </div>
-
       </div>
-
     </div>
   );
 };

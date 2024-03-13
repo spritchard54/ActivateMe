@@ -112,12 +112,19 @@ export default function LogActivity() {
             </select>
           </div>
 
-          <div className="mb-3">
-            <label htmlFor="activity" className="form-label">Select an activity</label>
+            <div className="mb-3">
 
-            <label htmlFor="activity" className="form-label float-end">
-              <Link to="/create-activity">Create a new Activity</Link>
-            </label>
+              <label htmlFor="activity" className="form-label green-title">
+                Select an activity
+              </label>
+
+              <label htmlFor="activity" className="form-label float-end">
+
+                <Link to="/create-activity">
+                  Create a new Activity
+                </Link>
+
+              </label>
 
             <select className="form-select" id="activity" name="activity" onChange={handleInputChange} value={formData.activity} required>
               {/* Map over activity types data to generate options */}
@@ -142,24 +149,31 @@ export default function LogActivity() {
             />
           </div>
 
-          <div className="mb-3">
-            <label htmlFor="comments" className="form-label">
-              Anything memorable about this activity?
-            </label>
-            <textarea
-              className="form-control"
-              id="comments"
-              name="comments"
-              rows="4"
-              onChange={handleInputChange}
-              value={formData.comments}
-            ></textarea>
-          </div>
+            <div className="mb-3">
 
-          <button type="submit" className="btn btn-primary">
-            Log Activity
-          </button>
-        </form>
+              <label htmlFor="comments" className="form-label green-title">
+                Anything memorable about this activity?
+              </label>
+
+              <textarea
+                className="form-control"
+                id="comments"
+                name="comments"
+                rows="4"
+                onChange={handleInputChange}
+                value={formData.comments}
+              ></textarea>
+
+            </div>
+
+            <button type="submit" className="btn btn-primary submit-btn mt-2">
+              Log Activity
+            </button>
+
+          </form>
+
+        </div>
+
       </div>
     </>
   );
