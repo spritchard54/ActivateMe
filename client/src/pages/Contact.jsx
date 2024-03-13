@@ -1,6 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, Component } from "react";
 import { Navigate } from 'react-router-dom';
+import background from '../assets/images/contactUsPage.jpg';
 
+// Styling for pop-up
 const styles = {
   alert: {
     position: "relative",
@@ -21,6 +23,7 @@ export default function Contact(){
     email: '',
     message: '',
   });
+
   // Define the route after submitting form
   const [redirectTo, setRedirectTo] = useState(null);
 
@@ -52,12 +55,21 @@ export default function Contact(){
   const handleClose = () => {
     setRedirectTo("/Dashboard")
   };
+
+  // Background Image variable
+  const myStyle = {
+    backgroundImage: `url(${background})`,
+    height: "100vh",
+    marginTop: "-70px",
+    backgroundSize: "cover",
+    backgroundRepeat: "no-repeat",
+  };
   
   return(
-    <main className="flex-row justify-center my-5">
+    <main style={myStyle} className="flex-row justify-center my-5">
       <div className={`col-6 col-lg-5 mx-auto my-4 ${formSubmitted ? 'd-none' : ''}`}> 
         <div className="card mt-5 mb-3 sub-form d-flex">
-          <h4 className="text-light p-2 mt-3 text-center">Contact Us</h4>
+          <h4 className="green-title p-2 mt-3 text-center">Contact Us</h4>
           <div className="card-body pb-4">
             <form onSubmit={handleSubmit}>
               <div className='form-box p-3'>
@@ -73,9 +85,7 @@ export default function Contact(){
                   onChange={handleChange}
                   required
                 />
-                <label htmlFor="loginInput" className='form-label login-input'>
-                  Email
-                </label>
+                <label htmlFor="loginInput" className='form-label login-input'>Email Address</label>
                 <input
                   className="form-input border d-block mb-3 p-2"
                   placeholder="email@example.com"
@@ -85,7 +95,7 @@ export default function Contact(){
                   onChange={handleChange}
                   required
                 />
-                <label htmlFor="loginInput" className='form-label login-input'>Message</label>
+                <label htmlFor="loginInput" className='form-label login-input'>How can we help?</label>
                 <textarea
                   className="form-input border d-block mb-3 p-2"
                   placeholder="Enter your message"
