@@ -39,7 +39,7 @@ export default function LogActivity() {
     duration: "",
     comments: "",
   });
-  
+
   const { loading: activityTypesLoading, data: activityTypesData } = useQuery(GET_ACTIVITYTYPE);
 
 
@@ -61,92 +61,134 @@ export default function LogActivity() {
 
   return (
     <>
-      <div className="container mt-4">
-        <h2 className="mb-4">Log New Activity</h2>
-        <form onSubmit={handleSubmit}>
-          <div className="mb-3">
-            <label htmlFor="when" className="form-label">
-              When did you complete this activity?
-            </label>
-            <input
-              type="text"
-              className="form-control"
-              id="when"
-              name="when"
-              onChange={handleInputChange}
-              value={formData.when}
-              required
-            />
-          </div>
+      <div className="container my-5 w-75">
 
-          <div className="mb-3">
-            <label htmlFor="category" className="form-label">
-              Select a category
-            </label>
-            <select
-              className="form-select"
-              id="category"
-              name="category"
-              onChange={handleInputChange}
-              value={formData.category}
-              required
-            >
-              {/* Add options for categories */}
-              <option value="">Choose...</option>
-              <option value="exercise">Exercise</option>
-              <option value="work">Work</option>
-              {/* Add more options as needed */}
-            </select>
-          </div>
+        <div className='container sub-form p-5'>
 
-          <div className="mb-3">
-            <label htmlFor="activity" className="form-label">Select an activity</label>
+          <h2 className="mb-4">
+            Log New Activity
+          </h2>
 
-            <label htmlFor="activity" className="form-label float-end">
-              <Link to="/create-activity">Create a new Activity</Link>
-            </label>
+          <form onSubmit={handleSubmit}>
 
-            <select className="form-select" id="activity" name="activity" onChange={handleInputChange} value={formData.activity} required>
-              {/* Map over activity types data to generate options */}
-              {activityTypesData && activityTypesData.activityTypes.map(activityType => (
-                <option key={activityType.id} value={activityType.actName}>{activityType.actName}</option>
-              ))}
-            </select>
-          </div>
+            <div className="mb-3">
 
-          <div className="mb-3">
-            <label htmlFor="duration" className="form-label">
-              How long did you perform this activity (enter time in hours)?
-            </label>
-            <input
-              type="text"
-              className="form-control"
-              id="duration"
-              name="duration"
-              onChange={handleInputChange}
-              value={formData.duration}
-              required
-            />
-          </div>
+              <label htmlFor="when" className="form-label green-title">
+                When did you complete this activity?
+              </label>
 
-          <div className="mb-3">
-            <label htmlFor="comments" className="form-label">
-              Anything memorable about this activity?
-            </label>
-            <textarea
-              className="form-control"
-              id="comments"
-              name="comments"
-              rows="4"
-              onChange={handleInputChange}
-              value={formData.comments}
-            ></textarea>
-          </div>
+              <input
+                type="text"
+                className="form-control"
+                id="when"
+                name="when"
+                onChange={handleInputChange}
+                value={formData.when}
+                required
+              />
 
-          <button type="submit" className="btn btn-primary">
-            Log Activity
-          </button>
-        </form>
+            </div>
+
+            <div className="mb-3">
+
+              <label htmlFor="category" className="form-label green-title">
+                Select a category
+              </label>
+
+              <select
+                className="form-select"
+                id="category"
+                name="category"
+                onChange={handleInputChange}
+                value={formData.category}
+                required
+              >
+
+                {/* Add options for categories */}
+                <option value="">
+                  Choose...
+                </option>
+                <option value="exercise">
+                  Exercise
+                </option>
+                <option value="work">
+                  Work
+                </option>
+
+                {/* Add more options as needed */}
+
+              </select>
+
+            </div>
+
+            <div className="mb-3">
+
+              <label htmlFor="activity" className="form-label green-title">
+                Select an activity
+              </label>
+
+              <label htmlFor="activity" className="form-label float-end">
+
+                <Link to="/create-activity">
+                  Create a new Activity
+                </Link>
+
+              </label>
+
+              <select className="form-select" id="activity" name="activity" onChange={handleInputChange} value={formData.activity} required>
+
+                {/* Map over activity types data to generate options */}
+                {activityTypesData && activityTypesData.activityTypes.map(activityType => (
+                  <option key={activityType.id} value={activityType.actName}>{activityType.actName}</option>
+                ))}
+
+              </select>
+
+            </div>
+
+            <div className="mb-3">
+
+              <label htmlFor="duration" className="form-label green-title">
+                How long did you perform this activity (enter time in hours)?
+              </label>
+
+              <input
+                type="text"
+                className="form-control"
+                id="duration"
+                name="duration"
+                onChange={handleInputChange}
+                value={formData.duration}
+                required
+              />
+
+            </div>
+
+            <div className="mb-3">
+
+              <label htmlFor="comments" className="form-label green-title">
+                Anything memorable about this activity?
+              </label>
+
+              <textarea
+                className="form-control"
+                id="comments"
+                name="comments"
+                rows="4"
+                onChange={handleInputChange}
+                value={formData.comments}
+              ></textarea>
+
+            </div>
+
+            <button type="submit" className="btn btn-primary submit-btn mt-2">
+              Log Activity
+            </button>
+
+          </form>
+
+        </div>
+
       </div>
     </>
   );
