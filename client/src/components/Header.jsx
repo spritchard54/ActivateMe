@@ -61,7 +61,7 @@ export default function Header() {
                   <p className="text">Activity Log</p>
                 </Link>
                 <Link to={"/log-activity"} className="nav-link">
-                  <p className="text">Create</p>
+                  <p className="text">Log an Activity</p>
                 </Link>
                 {/* <Link to={"/contact"} className="nav-link">
                   <p className="text">Contact Us</p>

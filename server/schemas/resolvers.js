@@ -71,8 +71,12 @@ const resolvers = {
 
     // Mutation to add a new activity
     addActivity: async (parent, { duration, commentText, categoryId, activityTypeId }) => {
+      console.log(duration);
+      console.log(commentText);
+      console.log(categoryId);
+      console.log(activityTypeId);
       const activity = await Activity.create({ duration, commentText, category: categoryId, activityType: activityTypeId });
-      return activity.populate('category').populate('activityType');
+      return activity
     },
 
     // Mutation to update an existing activity
