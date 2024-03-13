@@ -14,9 +14,7 @@ import ChartDataLabels from "chartjs-plugin-datalabels";
 Chart.register(ChartDataLabels);
 
 const myChart = new QuickChart();
-
 myChart.setWidth(200).setHeight(200).setBackgroundColor("transparent");
-
 myChart.setConfig({
   type: "doughnut",
   data: {
@@ -40,6 +38,76 @@ myChart.setConfig({
     title: {
       display: true,
       text: "Today",
+      fontColor: "#ffffff",
+    },
+    plugins: {
+      datalabels: {
+        color: "white",
+      },
+    },
+  },
+});
+
+const myChartTwo = new QuickChart();
+myChartTwo.setWidth(200).setHeight(200).setBackgroundColor("transparent");
+myChartTwo.setConfig({
+  type: "doughnut",
+  data: {
+    labels: ["Work", "Meals", "Sleep", "Exercise", "Mindfulness"],
+    datasets: [
+      {
+        label: "Catgeory",
+        data: [4, 4, 4, 2, 4],
+      },
+    ],
+  },
+  options: {
+    legend: {
+      display: true,
+      labels: {
+        fontSize: 7,
+        fontColor: "white",
+        boxWidth: 15,
+      },
+    },
+    title: {
+      display: true,
+      text: "Weekly",
+      fontColor: "#ffffff",
+    },
+    plugins: {
+      datalabels: {
+        color: "white",
+      },
+    },
+  },
+});
+
+const myChartThree = new QuickChart();
+myChartThree.setWidth(200).setHeight(200).setBackgroundColor("transparent");
+myChartThree.setConfig({
+  type: "doughnut",
+  data: {
+    labels: ["Work", "Meals", "Sleep", "Exercise", "Mindfulness"],
+    datasets: [
+      {
+        label: "Catgeory",
+        data: [160, 93, 240, 28, 4],
+      },
+    ],
+  },
+  options: {
+    legend: {
+      display: true,
+      labels: {
+        fontSize: 7,
+        fontColor: "white",
+        boxWidth: 15,
+      },
+    },
+    title: {
+      display: true,
+      text: "Monthly",
       fontColor: "#ffffff",
     },
     plugins: {
@@ -113,10 +181,10 @@ const Dashboard = () => {
             <img src={myChart.getUrl()} />
           </div>
           <div className="text-light">
-          <img src={myChart.getUrl()} />
+          <img src={myChartTwo.getUrl()} />
           </div>
           <div className="text-light">
-          <img src={myChart.getUrl()} />
+          <img src={myChartThree.getUrl()} />
           </div>
         </div>
 
