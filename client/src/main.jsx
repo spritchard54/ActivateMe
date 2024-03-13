@@ -20,7 +20,6 @@ import LogActivity from './pages/LogNewActivity.jsx';
 import CreateActivity from './pages/CreateActivity.jsx';
 import ActivityLog from './pages/ActivityLog.jsx';
 import ContactUs from './pages/Contact.jsx';
-import ContactConfirm from './pages/ContactConfirm.jsx';
 import AboutUs from './pages/AboutUs.jsx';
 
 // Define the accessible routes, and which components respond to which URL
@@ -62,10 +61,6 @@ const router = createBrowserRouter([
       {
         path: '/contact',
         element: <ContactUs />,
-      },
-      {
-        path: '/contact-confirmation',
-        element: <ContactConfirm />,
       },
       {
         path: '/about',
