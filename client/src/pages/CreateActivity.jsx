@@ -67,16 +67,15 @@ export default function CreateActivity() {
 
   return (
     <>
+      <div className="container my-5 w-50">
 
-      <div className="container-fluid my-5 w-50 sub-form py-5">
+        <div className="container sub-form p-5">
 
-        <h4 className="mb-4 text-center">
-          Create New Activity
-        </h4>
+          <h2 className="mb-4">
+            Create New Activity
+          </h2>
 
-        <div className="d-flex justify-content-center align-items-center w-100">
-
-          <form onSubmit={handleSubmit} className="w-75">
+          <form onSubmit={handleSubmit}>
 
             <div className="mb-3">
 
@@ -130,16 +129,14 @@ export default function CreateActivity() {
 
             </div>
 
-            <button type="submit" className="btn btn-primary submit-btn mt-1">
+            <button type="submit" className="btn btn-primary submit-btn mt-2">
               Create
             </button>
 
           </form>
 
         </div>
-
       </div>
-
     </>
   );
 }
