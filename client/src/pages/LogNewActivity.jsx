@@ -121,7 +121,7 @@ export default function LogActivity() {
 
               <label htmlFor="activity" className="form-label float-end">
 
-                <Link to="/create-activity" className='blue-title'>
+                <Link to="/create-activity" className='blue-title' id='create-activity-link'>
                   Create a new Activity
                 </Link>
 
