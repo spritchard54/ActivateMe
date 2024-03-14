@@ -17,7 +17,7 @@ export default function LogActivity() {
 
   const { loading: activityTypesLoading, data: activityTypesData } = useQuery(GET_ACTIVITYTYPE);
 
-  const [addActivity, {error: addActivityError, data: addActivityData}] = useMutation(ADD_ACTIVITY);
+  const [addActivity, { error: addActivityError, data: addActivityData }] = useMutation(ADD_ACTIVITY);
 
   const [formData, setFormData] = useState({
     when: "",
@@ -49,7 +49,7 @@ export default function LogActivity() {
       })
       // console.log(data);
     } catch (error) {
-      
+
     }
     console.log("Form submitted:", formData);
   };
@@ -72,45 +72,46 @@ export default function LogActivity() {
 
   return (
     <>
-      <div className="container mt-4">
-        <h2 className="mb-4">Log New Activity</h2>
-        <form onSubmit={handleSubmit}>
-          <div className="mb-3">
-            <label htmlFor="when" className="form-label">
-              When did you complete this activity?
-            </label>
-            <input
-              type="date"
-              className="form-control"
-              id="when"
-              name="when"
-              onChange={handleInputChange}
-              value={formData.when}
-              required
-            />
-          </div>
+      <div>
+        <div className="container mt-5 sub-form p-5" id='log-activity-sub'>
+          <h2 className="mb-4">Log New Activity</h2>
+          <form onSubmit={handleSubmit}>
+            <div className="mb-3">
+              <label htmlFor="when" className="form-label green-title">
+                When did you complete this activity?
+              </label>
+              <input
+                type="date"
+                className="form-control"
+                id="when"
+                name="when"
+                onChange={handleInputChange}
+                value={formData.when}
+                required
+              />
+            </div>
 
-          <div className="mb-3">
-            <label htmlFor="category" className="form-label">
-              Select a category
-            </label>
-            <select
-              className="form-select"
-              id="category"
-              name="category"
-              onChange={handleInputChange}
-              value={formData.category}
-              required
-            >
-              <option value="">Choose...</option>
-              {categoriesData &&
-                categoriesData.categories.map((category) => (
-                  <option key={category._id} value={category._id}>
-                    {category.catName}
-                  </option>
-                ))}
-            </select>
-          </div>
+            <div className="mb-3">
+              <label htmlFor="category" className="form-label green-title">
+                Select a category
+              </label>
+              <select
+                className="form-select"
+                id="category"
+                name="category"
+                onChange={handleInputChange}
+                value={formData.category}
+                required
+              >
+                <option value="">Choose...</option>
+                {categoriesData &&
+                  categoriesData.categories.map((category) => (
+                    <option key={category._id} value={category._id}>
+                      {category.catName}
+                    </option>
+                  ))}
+              </select>
+            </div>
 
             <div className="mb-3">
 
@@ -120,34 +121,34 @@ export default function LogActivity() {
 
               <label htmlFor="activity" className="form-label float-end">
 
-                <Link to="/create-activity">
+                <Link to="/create-activity" className='blue-title'>
                   Create a new Activity
                 </Link>
 
               </label>
 
-            <select className="form-select" id="activity" name="activity" onChange={handleInputChange} value={formData.activity} required>
-              {/* Map over activity types data to generate options */}
-              {activityTypesData && activityTypesData.activityTypes.map(activityType => (
-                <option key={activityType._id} value={activityType._id}>{activityType.actName}</option>
-              ))}
-            </select>
-          </div>
+              <select className="form-select" id="activity" name="activity" onChange={handleInputChange} value={formData.activity} required>
+                {/* Map over activity types data to generate options */}
+                {activityTypesData && activityTypesData.activityTypes.map(activityType => (
+                  <option key={activityType._id} value={activityType._id}>{activityType.actName}</option>
+                ))}
+              </select>
+            </div>
 
-          <div className="mb-3">
-            <label htmlFor="duration" className="form-label">
-              How long did you perform this activity (enter time in hours)?
-            </label>
-            <input
-              type="number"
-              className="form-control"
-              id="duration"
-              name="duration"
-              onChange={handleInputChange}
-              value= {formData.duration}
-              required
-            />
-          </div>
+            <div className="mb-3">
+              <label htmlFor="duration" className="form-label green-title">
+                How long did you perform this activity (enter time in hours)?
+              </label>
+              <input
+                type="number"
+                className="form-control"
+                id="duration"
+                name="duration"
+                onChange={handleInputChange}
+                value={formData.duration}
+                required
+              />
+            </div>
 
             <div className="mb-3">
 
@@ -174,7 +175,9 @@ export default function LogActivity() {
 
         </div>
 
-      
+      </div>
+
+
     </>
   );
 }

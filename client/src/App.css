@@ -143,6 +143,10 @@ flex-direction: column;
   transform: translateY(4px);
 }
 
+#log-activity-sub {
+  margin-bottom: 120px;
+}
+
 /* Table Styles */
 
 .activities-table th,
