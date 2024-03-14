@@ -111,7 +111,7 @@ footer {
 
 .sub-form {
 background: linear-gradient(171.16deg, rgba(27, 27, 27, 0.9) 26.66%, rgba(108, 108, 108, 0.9) 96.73%);
-box-shadow: 10px 23px 15.5px rgba(0, 0, 0, 0.25);
+box-shadow: 10px 23px 15.5px rgba(0, 0, 0, 0.745);
 border-radius: 34px;
 flex-direction: column;
 }
@@ -154,6 +154,19 @@ flex-direction: column;
 
 #home-img {
   background: url('./assets/images/homePage.jpg');
+}
+
+#about-img {
+  background: url('./assets/images/aboutUsPage.jpg')
+}
+
+#contact-img {
+  background: url('./assets/images/contactUsPage.jpg');
+}
+
+#home-img,
+#about-img,
+#contact-img {
   background-size: cover;
   width: 100%;
   height: 100vh;

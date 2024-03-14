@@ -73,8 +73,12 @@ export default function LogActivity() {
   return (
     <>
       <div>
-        <div className="container mt-5 sub-form p-5" id='log-activity-sub'>
-          <h2 className="mb-4">Log New Activity</h2>
+
+        <div className="container mt-5 sub-form px-5 py-4" id='log-activity-sub'>
+
+          <h2 className=" text-white mb-3 mt-1">
+            Log New Activity
+          </h2>
           <form onSubmit={handleSubmit}>
             <div className="mb-3">
               <label htmlFor="when" className="form-label green-title">
@@ -148,11 +152,10 @@ export default function LogActivity() {
                 value={formData.duration}
                 required
               />
-            </div>
 
-            <div className="mb-3">
 
-              <label htmlFor="comments" className="form-label green-title">
+
+              <label htmlFor="comments" className="form-label green-title mt-3">
                 Anything memorable about this activity?
               </label>
 
@@ -165,11 +168,11 @@ export default function LogActivity() {
                 value={formData.comments}
               ></textarea>
 
-            </div>
+              <button type="submit" className="btn mt-4 submit-btn w-100">
+                Log Activity
+              </button>
 
-            <button type="submit" className="btn btn-primary submit-btn mt-2">
-              Log Activity
-            </button>
+              </div>
 
           </form>
 

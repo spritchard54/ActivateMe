@@ -66,11 +66,11 @@ export default function CreateActivity() {
 
   return (
     <>
-      <div className="container my-5 w-50 d-flex align-items-center" id='new-activity-box'>
+      <div className="container my-4 w-50 d-flex align-items-center" id='new-activity-box'>
 
-        <div className="container sub-form p-5">
+        <div className="container sub-form pb-3 px-5 pt-4">
 
-          <h2 className="mb-4">
+          <h2 className="mb-2">
             Create New Activity
           </h2>
 
@@ -126,11 +126,14 @@ export default function CreateActivity() {
                 required
               />
 
+
+
+              <button type="submit" className="btn btn-primary submit-btn mt-4 w-100">
+                Create
+              </button>
+
             </div>
 
-            <button type="submit" className="btn btn-primary submit-btn mt-2">
-              Create
-            </button>
 
           </form>
 
