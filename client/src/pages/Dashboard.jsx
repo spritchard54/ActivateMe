@@ -8,10 +8,9 @@ import Auth from "../utils/auth";
 import "../css/dash.css";
 
 import QuickChart from "quickchart-js";
-import { Chart } from "chart.js";
-import ChartDataLabels from "chartjs-plugin-datalabels";
-
-Chart.register(ChartDataLabels);
+// import { Chart } from "chart.js";
+// import ChartDataLabels from "chartjs-plugin-datalabels";
+// Chart.register(ChartDataLabels);
 
 const myChart = new QuickChart();
 myChart.setWidth(200).setHeight(200).setBackgroundColor("transparent");
@@ -160,8 +159,8 @@ const Dashboard = () => {
   }
 
   return (
-    <div className="container-fluid d-flex justify-content-center align-items-center my-5">
-      <div className="container sub-form p-5 my-5">
+    <div className="container-fluid d-flex justify-content-center align-items-center">
+      <div className="container sub-form p-5">
         <div className="d-flex justify-content-between align-items-center">
           <h2 className="white-text">Dashboard</h2>
 
@@ -176,7 +175,7 @@ const Dashboard = () => {
           </div>
         </div>
 
-        <div className="container mt-2 py-5 d-flex justify-content-around align-items-center">
+        <div className="container py-5 d-flex justify-content-around align-items-center">
           <div className="text-light">
             <img src={myChart.getUrl()} />
           </div>
