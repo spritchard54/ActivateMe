@@ -35,12 +35,12 @@ const resolvers = {
 
   // Query to fetch all activity types
   activityTypes: async () => {
-    return await ActivityType.find({});
+    return await ActivityType.find({}).populate('user');
   },
 
   // Query to fetch a single activity type by ID
   activityType: async (parent, { _id }) => {
-    return await ActivityType.findById(_id).populate('userId');
+    return await ActivityType.findById(_id).populate('user');
   },
 
   },

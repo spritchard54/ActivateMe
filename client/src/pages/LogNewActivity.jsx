@@ -52,6 +52,7 @@ export default function LogActivity() {
     } catch (error) {
 
     }
+    window.location.assign('/dashboard');
     console.log("Form submitted:", formData);
   };
 
