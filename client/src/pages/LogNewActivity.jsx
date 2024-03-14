@@ -44,10 +44,11 @@ export default function LogActivity() {
           category: formData.category,
           activityType: formData.activity,
           duration: parseFloat(formData.duration),
-          commentText: formData.comments
+          commentText: formData.comments,
+          when: formData.when
         }
       })
-      // console.log(data);
+      console.log(data);
     } catch (error) {
 
     }

@@ -14,8 +14,12 @@ const activitySchema = new Schema({
     {
         type: Schema.Types.ObjectId,
         ref: 'ActivityType'
-    }
-    ,
+    },
+
+    when: {
+        type: Schema.Types.String,
+        required: true,
+    },
     duration: {
         type: Schema.Types.Decimal128,
         default: 0,

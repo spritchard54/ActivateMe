@@ -70,8 +70,9 @@ const resolvers = {
     },
 
     // Mutation to add a new activity
-    addActivity: async (parent, { duration, commentText, category, activityType }, context) => {
-      const activity = await Activity.create({ duration, commentText, category: category, activityType: activityType })
+    addActivity: async (parent, { when, duration, commentText, category, activityType }, context) => {
+      console.log(when);
+      const activity = await Activity.create({ when, duration, commentText, category: category, activityType: activityType })
       console.log(activity)
 
       if (context.user) {
@@ -86,10 +87,10 @@ const resolvers = {
     },
 
     // Mutation to update an existing activity
-    updateActivity: async (parent, { _id, duration, commentText, categoryId, activityTypeId }) => {
+    updateActivity: async (parent, { _id, when, duration, commentText, categoryId, activityTypeId }) => {
       const updatedActivity = await Activity.findByIdAndUpdate(
         _id,
-        { duration, commentText, category: categoryId, activityType: activityTypeId },
+        { when, duration, commentText, category: categoryId, activityType: activityTypeId },
         { new: true }
       ).populate('category').populate('activityType');
       return updatedActivity;
