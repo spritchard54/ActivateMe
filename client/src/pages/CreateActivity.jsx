@@ -66,7 +66,7 @@ export default function CreateActivity() {
 
   return (
     <>
-      <div className="container my-5 w-50">
+      <div className="container my-5 w-50 d-flex align-items-center" id='new-activity-box'>
 
         <div className="container sub-form p-5">
 

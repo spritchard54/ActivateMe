@@ -23,3 +23,19 @@ export const ADD_USER = gql`
     }
   }
 `;
+
+
+export const ADD_ACTIVITY = gql`
+mutation addActivity($duration: Float!, $commentText: String!, $category: ID!, $activityType: ID!){
+  addActivity(duration: $duration, commentText: $commentText, category: $category, activityType: $activityType){
+        duration
+        commentText
+        category{
+          catName
+        }
+        activityType{
+          actName
+        }
+  }
+}
+`

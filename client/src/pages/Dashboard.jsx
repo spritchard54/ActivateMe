@@ -191,6 +191,7 @@ const Dashboard = () => {
           <h4 id="recActivities" className="my-3 py-1 text-black">
             Recent Activities
           </h4>
+
           <table className="table-dark  activities-table">
             <thead>
               <tr>

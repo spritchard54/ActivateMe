@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import { useNavigate, useParams, Link } from "react-router-dom";
-import { QUERY_USER, QUERY_ME, GET_ACTIVITYTYPE } from "../utils/queries";
-import { useQuery } from "@apollo/client"; // Import gql from @apollo/client
+import { QUERY_USER, QUERY_ME, GET_ACTIVITYTYPE, GET_CATEGORIES } from "../utils/queries";
+import { ADD_ACTIVITY } from '../utils/mutations';
+import { useQuery, useMutation } from "@apollo/client"; // Import gql from @apollo/client
 import Auth from "../utils/auth";
 
 export default function LogActivity() {
@@ -11,74 +12,76 @@ export default function LogActivity() {
   });
 
   const user = data?.me || data?.user || {};
-  // navigate to personal profile page if username is yours
+
+  const { loading: categoriesLoading, data: categoriesData } = useQuery(GET_CATEGORIES);
+
+  const { loading: activityTypesLoading, data: activityTypesData } = useQuery(GET_ACTIVITYTYPE);
+
+  const [addActivity, { error: addActivityError, data: addActivityData }] = useMutation(ADD_ACTIVITY);
+
+  const [formData, setFormData] = useState({
+    when: "",
+    category: "",
+    activity: "",
+    duration: 0,
+    comments: "",
+  });
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      // console.log("Form submitted:", formData);
+      const { data } = await addActivity({
+        variables: {
+          category: formData.category,
+          activityType: formData.activity,
+          duration: parseFloat(formData.duration),
+          commentText: formData.comments
+        }
+      })
+      // console.log(data);
+    } catch (error) {
+
+    }
+    console.log("Form submitted:", formData);
+  };
+
   if (Auth.loggedIn() && Auth.getUser().data.username === userParam) {
     return <Navigate to="/Dashboard" />;
   }
 
-  if (loading) {
+  if (loading || categoriesLoading || activityTypesLoading) {
     return <div>Loading...</div>;
   }
 
   if (!user?.username) {
     return (
       <div className="container-fluid w-75 my-5 text-center">
-        <h4>
-          You need to be logged in to see this. Use the navigation links above
-          to sign up or log in!
-        </h4>
+        <h4>You need to be logged in to see this. Use the navigation links above to sign up or log in!</h4>
       </div>
     );
   }
 
-  // State to manage form data
-  const [formData, setFormData] = useState({
-    when: "",
-    category: "",
-    activity: "",
-    duration: "",
-    comments: "",
-  });
-
-  const { loading: activityTypesLoading, data: activityTypesData } = useQuery(GET_ACTIVITYTYPE);
-
-
-  // Function to handle form input changes
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prevData) => ({
-      ...prevData,
-      [name]: value,
-    }));
-  };
-
-  // Function to handle form submission
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Add logic to handle form submission (e.g., logging activity)
-    console.log("Form submitted:", formData);
-  };
-
   return (
     <>
-      <div className="container my-5 w-75">
-
-        <div className='container sub-form p-5'>
-
-          <h2 className="mb-4">
-            Log New Activity
-          </h2>
-
+      <div>
+        <div className="container mt-5 sub-form p-5" id='log-activity-sub'>
+          <h2 className="mb-4">Log New Activity</h2>
           <form onSubmit={handleSubmit}>
-
             <div className="mb-3">
-
               <label htmlFor="when" className="form-label green-title">
                 When did you complete this activity?
               </label>
-
               <input
-                type="text"
+                type="date"
                 className="form-control"
                 id="when"
                 name="when"
@@ -86,15 +89,12 @@ export default function LogActivity() {
                 value={formData.when}
                 required
               />
-
             </div>
 
             <div className="mb-3">
-
               <label htmlFor="category" className="form-label green-title">
                 Select a category
               </label>
-
               <select
                 className="form-select"
                 id="category"
@@ -103,22 +103,14 @@ export default function LogActivity() {
                 value={formData.category}
                 required
               >
-
-                {/* Add options for categories */}
-                <option value="">
-                  Choose...
-                </option>
-                <option value="exercise">
-                  Exercise
-                </option>
-                <option value="work">
-                  Work
-                </option>
-
-                {/* Add more options as needed */}
-
+                <option value="">Choose...</option>
+                {categoriesData &&
+                  categoriesData.categories.map((category) => (
+                    <option key={category._id} value={category._id}>
+                      {category.catName}
+                    </option>
+                  ))}
               </select>
-
             </div>
 
             <div className="mb-3">
@@ -129,31 +121,26 @@ export default function LogActivity() {
 
               <label htmlFor="activity" className="form-label float-end">
 
-                <Link to="/create-activity">
+                <Link to="/create-activity" className='blue-title' id='create-activity-link'>
                   Create a new Activity
                 </Link>
 
               </label>
 
               <select className="form-select" id="activity" name="activity" onChange={handleInputChange} value={formData.activity} required>
-
                 {/* Map over activity types data to generate options */}
                 {activityTypesData && activityTypesData.activityTypes.map(activityType => (
-                  <option key={activityType.id} value={activityType.actName}>{activityType.actName}</option>
+                  <option key={activityType._id} value={activityType._id}>{activityType.actName}</option>
                 ))}
-
               </select>
-
             </div>
 
             <div className="mb-3">
-
               <label htmlFor="duration" className="form-label green-title">
                 How long did you perform this activity (enter time in hours)?
               </label>
-
               <input
-                type="text"
+                type="number"
                 className="form-control"
                 id="duration"
                 name="duration"
@@ -161,7 +148,6 @@ export default function LogActivity() {
                 value={formData.duration}
                 required
               />
-
             </div>
 
             <div className="mb-3">
@@ -190,6 +176,8 @@ export default function LogActivity() {
         </div>
 
       </div>
+
+
     </>
   );
 }

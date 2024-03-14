@@ -70,9 +70,19 @@ const resolvers = {
     },
 
     // Mutation to add a new activity
-    addActivity: async (parent, { duration, commentText, categoryId, activityTypeId }) => {
-      const activity = await Activity.create({ duration, commentText, category: categoryId, activityType: activityTypeId });
-      return activity.populate('category').populate('activityType');
+    addActivity: async (parent, { duration, commentText, category, activityType }, context) => {
+      const activity = await Activity.create({ duration, commentText, category: category, activityType: activityType })
+      console.log(activity)
+
+      if (context.user) {
+
+        const userData = await User.findOneAndUpdate(
+          { _id: context.user._id },
+          { $push: { activities: activity._id } },
+          {new:true} ); 
+          return activity;
+      }
+      throw AuthenticationError;
     },
 
     // Mutation to update an existing activity
