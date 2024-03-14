@@ -16,7 +16,7 @@ const styles = {
   },
 };
 
-export default function Contact(){
+export default function Contact() {
   // Define state to manage form data
   const [formData, setFormData] = useState({
     name: '',
@@ -56,23 +56,17 @@ export default function Contact(){
     setRedirectTo("/Dashboard")
   };
 
-  // Background Image variable
-  const myStyle = {
-    backgroundImage: `url(${background})`,
-    height: "100vh",
-    marginTop: "-70px",
-    backgroundSize: "cover",
-    backgroundRepeat: "no-repeat",
-  };
-  
-  return(
-    <main style={myStyle} className="flex-row justify-center my-5">
-      <div className={`col-6 col-lg-5 mx-auto my-4 ${formSubmitted ? 'd-none' : ''}`}> 
-        <div className="card mt-5 mb-3 sub-form d-flex">
-          <h4 className="green-title p-2 mt-3 text-center">Contact Us</h4>
-          <div className="card-body pb-4">
+  return (
+    <main id='contact-img' className="pt-2">
+      <div className={`col-6 col-lg-5 mx-auto my-4 ${formSubmitted ? 'd-none' : ''}`}>
+        <div className="container mt-5 sub-form d-flex p-3">
+          <div className="card-body">
+
             <form onSubmit={handleSubmit}>
               <div className='form-box p-3'>
+                <h2 className="text-white mb-2">
+                  Contact Us
+                </h2>
                 <label htmlFor="loginInput" className='form-label login-input'>
                   Name
                 </label>
@@ -105,30 +99,35 @@ export default function Contact(){
                   onChange={handleChange}
                   required
                 ></textarea>
+
+                <button
+                  className="btn btn-primary submit-btn mt-2"
+                  style={{ cursor: 'pointer' }}
+                  type="submit"
+                >
+                  Submit
+                </button>
+
               </div>
-              <button
-                className="btn btn-block d-block mx-auto mt-3 submit-btn"
-                style={{ cursor: 'pointer' }}
-                type="submit"
-              >
-                Submit
-              </button>
+
+
+
             </form>
           </div>
         </div>
       </div>
       <div>
-      {formSubmitted && (
-        <div className="col-sm-4 mx-auto my-4">
-          <div style={styles.alert} className="alert alert-success alert-dismissible fade-in">
-            <a href="#" style={styles.close} className="close" onClick={handleClose} aria-label="close">&times;</a>
-            <h4 className="alert-heading">Thank you, {formData.name}!</h4>
-            <p>We will get back you as soon as possible.</p>
+        {formSubmitted && (
+          <div className="col-sm-4 mx-auto my-4">
+            <div style={styles.alert} className="alert alert-success alert-dismissible fade-in">
+              <a href="#" style={styles.close} className="close" onClick={handleClose} aria-label="close">&times;</a>
+              <h4 className="alert-heading">Thank you, {formData.name}!</h4>
+              <p>We will get back you as soon as possible.</p>
+            </div>
           </div>
-        </div>
-      )}
-      {redirectTo && <Navigate to="/Dashboard" />}
-    </div>
-    </main> 
+        )}
+        {redirectTo && <Navigate to="/Dashboard" />}
+      </div>
+    </main>
   );
 }

@@ -39,15 +39,15 @@ const Signup = () => {
   };
 
   return (
-    <main className="flex-row justify-center my-5">
+    <main className="my-5">
 
       <div className="col-6 col-lg-5 mx-auto my-4">
 
-        <div className="card mt-5 mb-3 sub-form d-flex">
+        <div className="container mt-5 sub-form d-flex p-3">
 
-          <h4 className="text-light p-2 mt-3 text-center">Sign Up</h4>
 
-          <div className="card-body pb-4">
+
+          <div className="card-body">
 
             {data ? (
 
@@ -61,6 +61,10 @@ const Signup = () => {
               <form onSubmit={handleFormSubmit}>
 
                 <div className='form-box p-3'>
+
+                <h2 className="text-white mb-2">
+                  Sign Up
+                </h2>
 
                   <label htmlFor="loginInput" className='form-label login-input'>
                     Username
@@ -98,15 +102,16 @@ const Signup = () => {
                     onChange={handleChange}
                   />
 
+                  <button
+                    className="btn mt-4 submit-btn"
+                    style={{ cursor: 'pointer' }}
+                    type="submit"
+                  >
+                    Submit
+                  </button>
                 </div>
 
-                <button
-                  className="btn btn-block d-block mx-auto mt-3 submit-btn"
-                  style={{ cursor: 'pointer' }}
-                  type="submit"
-                >
-                  Submit
-                </button>
+
 
               </form>
 
