@@ -12,7 +12,7 @@ export default function Home() {
 
   return (
     <>
-      <main id='home-img' className="pt-5">
+      <main id='home-img' className="pt-5" >
 
         <div className="container-fluid w-75 p-5 d-flex justify-content-center align-items-center">
 

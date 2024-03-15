@@ -74,7 +74,7 @@ export default function LogActivity() {
 
   return (
     <>
-      <div>
+      <main>
 
         <div className="container mt-5 sub-form px-5 py-4" id='log-activity-sub'>
 
@@ -180,8 +180,7 @@ export default function LogActivity() {
 
         </div>
 
-      </div>
-
+      </main>
 
     </>
   );
