@@ -16,6 +16,20 @@ export const QUERY_ME = gql`
       _id
       username
       email
+      activities{
+        duration
+        commentText
+        when
+        category{
+          _id
+          catName
+        }
+        activityType{
+          _id
+          actName
+        }
+      }
+    
       }
   }
 `;
