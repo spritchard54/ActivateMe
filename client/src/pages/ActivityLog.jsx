@@ -11,6 +11,11 @@ export default function ActivityLog() {
   });
 
   const user = data?.me || data?.user || {};
+
+  // Test code below, remove if it doesn't work
+  const myActivities = data?.me || data?.user || {};
+  let reverse = myActivities.activities?.toReversed();
+
   // navigate to personal profile page if username is yours
   if (Auth.loggedIn() && Auth.getUser().data.username === userParam) {
     return <Navigate to="/Dashboard" />;
@@ -33,11 +38,8 @@ export default function ActivityLog() {
 
   return (
     <main id="log-new">
-      
       <div className="container-fluid w-75 mt-4">
-
         <div className="container p-1">
-
           <h2 id="recActivities" className="my-3 py-1 text-black">
             Activity Log
           </h2>
@@ -53,21 +55,21 @@ export default function ActivityLog() {
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>4/10/2024</td>
-                <td>Meals</td>
-                <td>Dinner</td>
-                <td>1</td>
-                <td>Made chicken parm tn. mmmm.</td>
-                {/* <td>{{createdDate}}</td> */}
-                {/* <td>{{Category}}</td> */}
-                {/* <td>{{activityType}}</td> */}
-                {/* <td>{{duration}}</td> */}
-                {/* <td>{{commentText}}</td> */}
-              </tr>
+              {reverse.slice(0, 6).map((activity) => {
+                return (
+                  <>
+                    <tr>
+                      <td>{activity.when}</td>
+                      <td>{activity.category.catName}</td>
+                      <td>UPDATE</td>
+                      <td>{activity.duration}</td>
+                      <td>{activity.commentText}</td>
+                    </tr>
+                  </>
+                );
+              })}
             </tbody>
           </table>
-
         </div>
       </div>
     </main>

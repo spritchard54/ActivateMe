@@ -152,7 +152,9 @@ export default function LogActivity() {
                 onChange={handleInputChange}
                 value={formData.activity}
                 required
+                
               >
+                {/* <option value="">Choose...</option> */}
                 {/* Map over activity types data to generate options */}
                 {activityTypesData &&
                   activityTypesData.activityTypes.map((activityType) => (
@@ -196,7 +198,7 @@ export default function LogActivity() {
             </div>
           </form>
         </div>
-
+    </main>
     </>
   );
 }
