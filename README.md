@@ -55,7 +55,7 @@ Track your trends and patterns to make informed decisions about your lifestyle a
 
 1. [Bogdan Tkachuk](https://github.com/aldu1n) - Backend Developer
 2. [Thomas Dossman](https://github.com/Dossman-thomas) - Frontend Developer
-3. [Steve Pritchard](https://github.com/spritchard54) - Project Initiator / Developer
+3. [Steve Pritchard](https://github.com/spritchard54) - Project Initiator / Web Developer
 4. [Lisa Lar](https://github.com/ayoleese) - Frontend Developer
 5. [Tucker McKee](https://github.com/McKee-T) - Backend Developer
 
