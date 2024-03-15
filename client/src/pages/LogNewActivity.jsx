@@ -83,6 +83,13 @@ export default function LogActivity() {
 
   return (
     <>
+      <main>
+
+        <div className="container mt-5 sub-form px-5 py-4" id='log-activity-sub'>
+
+          <h2 className=" text-white mb-3 mt-1">
+            Log New Activity
+          </h2>
       <div>
         <div
           className="container mt-5 sub-form px-5 py-4"
@@ -193,7 +200,9 @@ export default function LogActivity() {
             </div>
           </form>
         </div>
-      </div>
+
+      </main>
+
     </>
   );
 }
