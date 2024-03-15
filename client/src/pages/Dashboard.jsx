@@ -174,7 +174,8 @@ const Dashboard = () => {
     },
   });
 
-  console.log(reverse);
+  // console.log(reverse);
+  
   if (Auth.loggedIn() && Auth.getUser().data.username === userParam) {
     return <Navigate to="/Dashboard" />;
   }
@@ -195,6 +196,7 @@ const Dashboard = () => {
   }
 
   return (
+    <main>
     <div className="container-fluid d-flex justify-content-center align-items-center">
       <div className="container sub-form p-5">
         <div className="d-flex justify-content-between align-items-center">
@@ -257,6 +259,7 @@ const Dashboard = () => {
         </div>
       </div>
     </div>
+    </main>
   );
 };
 
