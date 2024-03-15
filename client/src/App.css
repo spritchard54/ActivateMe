@@ -45,8 +45,11 @@ header {
   margin-right: 30px;
 }
 
-/* Footer Styling */
+.text:hover {
+  color: var(--hghlght);
+}
 
+/* Footer Styling */
 footer {
   height: 30px;
   /* position: fixed;

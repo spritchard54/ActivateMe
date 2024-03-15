@@ -57,13 +57,13 @@ export default function Header() {
             <>
               <div className="d-flex align-items-center nav-link-box">
                 <Link to={"/dashboard"} className="nav-link">
-                  <p className="text">Dashboard</p>
+                  <p className="text m-3">Dashboard</p>
                 </Link>
                 <Link to={"/activity-log"} className="nav-link">
-                  <p className="text">Activity Log</p>
+                  <p className="text m-3">Activity Log</p>
                 </Link>
                 <Link to={"/log-activity"} className="nav-link">
-                  <p className="text">Log an Activity</p>
+                  <p className="text m-3">Log an Activity</p>
                 </Link>
                 {/* <Link to={"/contact"} className="nav-link">
                   <p className="text">Contact Us</p>

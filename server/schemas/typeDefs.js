@@ -14,6 +14,7 @@ const typeDefs = `
 
     type Activity {
         _id: ID
+        when: String
         duration: Float
         commentText: String
         category: Category
@@ -46,8 +47,8 @@ const typeDefs = `
     type Mutation {
         addUser(username: String!, email: String!, password: String!): Auth
         login(email: String!, password: String!): Auth
-        addActivity(duration: Float!, commentText: String!, category: ID!, activityType: ID!): Activity
-        updateActivity(_id: ID!, duration: Float, commentText: String, Category: ID, activityType: ID): Activity
+        addActivity(when: String!, duration: Float!, commentText: String!, category: ID!, activityType: ID!): Activity
+        updateActivity(_id: ID!, when: String, duration: Float, commentText: String, Category: ID, activityType: ID): Activity
         deleteActivity(_id: ID!): Activity
         addActivityType(actName: String!, userId: ID!): ActivityType
         updateActivityType(_id: ID!, actName: String, userId: ID): ActivityType

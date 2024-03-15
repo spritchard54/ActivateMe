@@ -136,8 +136,11 @@ const Dashboard = () => {
   const { loading, data } = useQuery(userParam ? QUERY_USER : QUERY_ME, {
     variables: { username: userParam },
   });
-
+console.log(data);
   const user = data?.me || data?.user || {};
+  const myActivities = data?.me || data?.user || {};
+  let reverse = myActivities.activities?.toReversed();
+  console.log(reverse)
   // navigate to personal profile page if username is yours
   if (Auth.loggedIn() && Auth.getUser().data.username === userParam) {
     return <Navigate to="/Dashboard" />;
@@ -195,32 +198,44 @@ const Dashboard = () => {
               Recent Activities
             </h4>
 
-            <table className="table-dark  activities-table">
-              <thead>
+          <table className="table-dark  activities-table">
+            <thead>
+              <tr>
+                <th scope="col">Date</th>
+                <th scope="col">Category</th>
+                <th scope="col">Activity</th>
+                <th scope="col">Duration</th>
+                <th scope="col">Comments</th>
+              </tr>
+            </thead>
+            <tbody>
+           
+              {reverse.slice(0 , 5).map(activity => {
+                return (
                 <tr>
-                  <th scope="col">Date</th>
-                  <th scope="col">Category</th>
-                  <th scope="col">Activity</th>
-                  <th scope="col">Duration</th>
-                  <th scope="col">Comments</th>
+                  <td>
+                    {activity.when}
+                  </td>
+                  <td>
+                    {activity.category.catName}
+                  </td>
+                  <td>
+                   UPDATE
+                  </td>
+                  <td>
+                    {activity.duration}
+                  </td>
+                  <td>
+                    {activity.commentText}
+                  </td>
                 </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>4/10/2024</td>
-                  <td>Meals</td>
-                  <td>Dinner</td>
-                  <td>1</td>
-                  <td>Made chicken parm tn. mmmm.</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
+                )
+              })}
+            </tbody>
+          </table>
         </div>
       </div>
-
-    </main>
-
+    </div>
   );
 };
 
