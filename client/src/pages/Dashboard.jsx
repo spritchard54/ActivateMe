@@ -45,14 +45,13 @@ const Dashboard = () => {
       myObject[data.me.activities[index].category.catName] = 0;
     }
     for (let index = 0; index < data.me.activities.length; index++) {
-      myObject[data.me.activities[index].category.catName] +=
-        data.me.activities[index].duration;
+      myObject[data.me.activities[index].category.catName] += data.me.activities[index].duration;
     }
   }
 
   const myLables = Object.keys(myObject);
   const myData = Object.values(myObject);
-  
+
   // const myObjectWeek = {};
   // if (data?.me) {
   //   for (let index = 0; index < data.me.activities.length; index++) {
@@ -176,7 +175,6 @@ const Dashboard = () => {
   });
 
   console.log(reverse);
-  // navigate to personal profile page if username is yours
   if (Auth.loggedIn() && Auth.getUser().data.username === userParam) {
     return <Navigate to="/Dashboard" />;
   }
@@ -197,43 +195,38 @@ const Dashboard = () => {
   }
 
   return (
-    
-    
+    <div className="container-fluid d-flex justify-content-center align-items-center">
+      <div className="container sub-form p-5">
+        <div className="d-flex justify-content-between align-items-center">
+          <h2 className="white-text">Dashboard</h2>
 
-      <div className="container-fluid d-flex justify-content-center align-items-center">
-        <div className="container sub-form p-5">
-          <div className="d-flex justify-content-between align-items-center">
-            <h2 className="white-text">Dashboard</h2>
+          <div className="d-flex align-items-center gap-3">
+            <button onClick={logButton} className="logAct">
+              Log Activity
+            </button>
 
-            <div className="d-flex align-items-center gap-3">
-              <button onClick={logButton} className="logAct">
-                Log Activity
-              </button>
-
-              <button onClick={viewActivityLog} className=" logAct">
-                View Activities
-              </button>
-            </div>
+            <button onClick={viewActivityLog} className=" logAct">
+              View Activities
+            </button>
           </div>
+        </div>
 
-
-          <div className="container py-5 d-flex justify-content-around align-items-center">
-            <div className="text-light">
-              <img src={myChart.getUrl()} />
-            </div>
-            <div className="text-light">
-              <img src={myChartTwo.getUrl()} />
-            </div>
-            <div className="text-light">
-              <img src={myChartThree.getUrl()} />
-            </div>
+        <div className="container py-5 d-flex justify-content-around align-items-center">
+          <div className="text-light">
+            <img src={myChart.getUrl()} />
           </div>
+          <div className="text-light">
+            <img src={myChartTwo.getUrl()} />
+          </div>
+          <div className="text-light">
+            <img src={myChartThree.getUrl()} />
+          </div>
+        </div>
 
-
-          <div className="container p-1">
-            <h4 id="recActivities" className="my-3 py-1 text-black">
-              Recent Activities
-            </h4>
+        <div className="container p-1">
+          <h4 id="recActivities" className="my-3 py-1 text-black">
+            Recent Activities
+          </h4>
 
           <table className="table-dark  activities-table">
             <thead>
@@ -246,8 +239,9 @@ const Dashboard = () => {
               </tr>
             </thead>
             <tbody>
-              {reverse.slice(0, 5).map((activity) => {
+              {reverse.slice(0, 6).map((activity) => {
                 return (
+                  <>
                   <tr>
                     <td>{activity.when}</td>
                     <td>{activity.category.catName}</td>
@@ -255,6 +249,7 @@ const Dashboard = () => {
                     <td>{activity.duration}</td>
                     <td>{activity.commentText}</td>
                   </tr>
+                  </>
                 );
               })}
             </tbody>
