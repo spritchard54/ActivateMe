@@ -1,13 +1,11 @@
-import React, { useState, Component } from "react";
+import React, { useState, useRef } from "react";
 import { Navigate } from 'react-router-dom';
-import background from '../assets/images/contactUsPage.jpg';
+import emailjs from '@emailjs/browser';
 
-// Styling for pop-up
 const styles = {
   alert: {
     position: "relative",
   },
-  // location of the "X" in pop-up
   close: {
     position: "absolute",
     top: 0,
@@ -17,17 +15,17 @@ const styles = {
 };
 
 export default function Contact() {
-  // Define state to manage form data
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     message: '',
   });
 
-  // Define the route after submitting form
   const [redirectTo, setRedirectTo] = useState(null);
+  const [formSubmitted, setFormSubmitted] = useState(false);
 
-  // Function to handle input changes
+  const form = useRef();
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevState) => ({
@@ -36,24 +34,26 @@ export default function Contact() {
     }));
   };
 
-  const [formSubmitted, setFormSubmitted] = useState(false);
-
-  // Function to handle form submission
-  const handleSubmit = (e) => {
+  // route to email after user fills out form
+  const sendEmail = (e) => {
     e.preventDefault();
-    console.log(formData);
-    // Return form data after submitting
-    setFormData({
-      name: '',
-      email: '',
-      message: '',
-    });
-    setFormSubmitted(true);
+    emailjs
+      .sendForm('service_8o3at1s', 'template_x283fpt', form.current, {
+        publicKey: 'U9vQPtKgvzRr50Jxm',
+      })
+      .then(
+        () => {
+          console.log('SUCCESS!');
+          setFormSubmitted(true);
+        },
+        (error) => {
+          console.log('FAILED...', error.text);
+        }
+      );
   };
 
-  // Redirect user to the Dashboard after closing pop-up confirmation
   const handleClose = () => {
-    setRedirectTo("/Dashboard")
+    setRedirectTo("/Dashboard");
   };
 
   return (
@@ -61,8 +61,7 @@ export default function Contact() {
       <div className={`col-6 col-lg-5 mx-auto my-4 ${formSubmitted ? 'd-none' : ''}`}>
         <div className="container mt-5 sub-form d-flex p-3">
           <div className="card-body">
-
-            <form onSubmit={handleSubmit}>
+            <form ref={form} onSubmit={sendEmail}>
               <div className='form-box p-3'>
                 <h2 className="text-white mb-2">
                   Contact Us
@@ -107,11 +106,7 @@ export default function Contact() {
                 >
                   Submit
                 </button>
-
               </div>
-
-
-
             </form>
           </div>
         </div>
