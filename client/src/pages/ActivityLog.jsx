@@ -32,41 +32,44 @@ export default function ActivityLog() {
   }
 
   return (
-    <div className="container-fluid w-75 mt-4">
+    <main id="log-new">
+      
+      <div className="container-fluid w-75 mt-4">
 
-      <div className="container p-1">
+        <div className="container p-1">
 
-        <h2 id="recActivities" className="my-3 py-1 text-black">
-          Activity Log
-        </h2>
-        
-        <table className="table-dark  activities-table">
-          <thead>
-            <tr>
-              <th scope="col">Date</th>
-              <th scope="col">Category</th>
-              <th scope="col">Activity</th>
-              <th scope="col">Duration</th>
-              <th scope="col">Comments</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>4/10/2024</td>
-              <td>Meals</td>
-              <td>Dinner</td>
-              <td>1</td>
-              <td>Made chicken parm tn. mmmm.</td>
-              {/* <td>{{createdDate}}</td> */}
-              {/* <td>{{Category}}</td> */}
-              {/* <td>{{activityType}}</td> */}
-              {/* <td>{{duration}}</td> */}
-              {/* <td>{{commentText}}</td> */}
-            </tr>
-          </tbody>
-        </table>
+          <h2 id="recActivities" className="my-3 py-1 text-black">
+            Activity Log
+          </h2>
 
+          <table className="table-dark  activities-table">
+            <thead>
+              <tr>
+                <th scope="col">Date</th>
+                <th scope="col">Category</th>
+                <th scope="col">Activity</th>
+                <th scope="col">Duration</th>
+                <th scope="col">Comments</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>4/10/2024</td>
+                <td>Meals</td>
+                <td>Dinner</td>
+                <td>1</td>
+                <td>Made chicken parm tn. mmmm.</td>
+                {/* <td>{{createdDate}}</td> */}
+                {/* <td>{{Category}}</td> */}
+                {/* <td>{{activityType}}</td> */}
+                {/* <td>{{duration}}</td> */}
+                {/* <td>{{commentText}}</td> */}
+              </tr>
+            </tbody>
+          </table>
+
+        </div>
       </div>
-    </div>
+    </main>
   );
 }

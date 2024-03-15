@@ -18,7 +18,9 @@ export default function Header() {
 
   return (
     <>
+
       <header className="container-fluid header d-flex align-items-center">
+
         <nav className="navbar d-flex justify-content-between align-items-center">
           {Auth.loggedIn() ? (
             <>
@@ -72,7 +74,7 @@ export default function Header() {
                   </button>
                 </Link>
               </div>
-              
+
             </>
           ) : (
             // <div></div>
@@ -82,6 +84,7 @@ export default function Header() {
           )}
         </nav>
       </header>
+
     </>
   );
 }
