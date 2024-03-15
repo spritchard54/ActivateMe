@@ -228,7 +228,7 @@ const Dashboard = () => {
             Recent Activities
           </h4>
 
-          <table className="table-dark  activities-table">
+          <table className="table table-dark table-striped activities-table">
             <thead>
               <tr>
                 <th scope="col">Date</th>
