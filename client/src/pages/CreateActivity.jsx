@@ -65,80 +65,84 @@ export default function CreateActivity() {
   };
 
   return (
-    <>
-      <div className="container my-4 w-50 d-flex align-items-center" id='new-activity-box'>
 
-        <div className="container sub-form pb-3 px-5 pt-4">
+      <main>
 
-          <h2 className="mb-2">
-            Create New Activity
-          </h2>
+        <div className="container my-4 w-50 d-flex align-items-center" id='new-activity-box'>
 
-          <form onSubmit={handleSubmit}>
+          <div className="container sub-form pb-3 px-5 pt-4">
 
-            <div className="mb-3">
+            <h2 className="mb-2">
+              Create New Activity
+            </h2>
 
-              <label htmlFor="category" className="form-label green-title">
-                Select a category
-              </label>
+            <form onSubmit={handleSubmit}>
 
-              <select
-                className="form-select"
-                id="category"
-                name="category"
-                onChange={handleInputChange}
-                value={formData.category}
-                required
-              >
+              <div className="mb-3">
 
-                {/* Add options for categories */}
-                <option value="">
-                  Choose...
-                </option>
+                <label htmlFor="category" className="form-label green-title">
+                  Select a category
+                </label>
 
-                <option value="exercise">
-                  Exercise
-                </option>
+                <select
+                  className="form-select"
+                  id="category"
+                  name="category"
+                  onChange={handleInputChange}
+                  value={formData.category}
+                  required
+                >
 
-                <option value="work">
-                  Work
-                </option>
+                  {/* Add options for categories */}
+                  <option value="">
+                    Choose...
+                  </option>
 
-                {/* Add more options as needed */}
+                  <option value="exercise">
+                    Exercise
+                  </option>
 
-              </select>
+                  <option value="work">
+                    Work
+                  </option>
 
-            </div>
+                  {/* Add more options as needed */}
 
-            <div className="mb-3">
+                </select>
 
-              <label htmlFor="activityName" className="form-label green-title">
-                Enter the name of the new activity
-              </label>
+              </div>
 
-              <input
-                type="text"
-                className="form-control"
-                id="activityName"
-                name="activityName"
-                onChange={handleInputChange}
-                value={formData.activityName}
-                required
-              />
+              <div className="mb-3">
 
+                <label htmlFor="activityName" className="form-label green-title">
+                  Enter the name of the new activity
+                </label>
 
-
-              <button type="submit" className="btn btn-primary submit-btn mt-4 w-100">
-                Create
-              </button>
-
-            </div>
+                <input
+                  type="text"
+                  className="form-control"
+                  id="activityName"
+                  name="activityName"
+                  onChange={handleInputChange}
+                  value={formData.activityName}
+                  required
+                />
 
 
-          </form>
 
+                <button type="submit" className="btn btn-primary submit-btn mt-4 w-100">
+                  Create
+                </button>
+
+              </div>
+
+
+            </form>
+
+          </div>
         </div>
-      </div>
-    </>
+
+      </main>
+
   );
 }

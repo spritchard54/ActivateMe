@@ -159,62 +159,68 @@ const Dashboard = () => {
   }
 
   return (
-    <div className="container-fluid d-flex justify-content-center align-items-center">
-      <div className="container sub-form p-5">
-        <div className="d-flex justify-content-between align-items-center">
-          <h2 className="white-text">Dashboard</h2>
+    
+    <main>
 
-          <div className="d-flex align-items-center gap-3">
-            <button onClick={logButton} className="logAct">
-              Log Activity
-            </button>
+      <div className="container-fluid d-flex justify-content-center align-items-center">
+        <div className="container sub-form p-5">
+          <div className="d-flex justify-content-between align-items-center">
+            <h2 className="white-text">Dashboard</h2>
 
-            <button onClick={viewActivityLog} className=" logAct">
-              View Activities
-            </button>
+            <div className="d-flex align-items-center gap-3">
+              <button onClick={logButton} className="logAct">
+                Log Activity
+              </button>
+
+              <button onClick={viewActivityLog} className=" logAct">
+                View Activities
+              </button>
+            </div>
           </div>
-        </div>
 
-        <div className="container py-5 d-flex justify-content-around align-items-center">
-          <div className="text-light">
-            <img src={myChart.getUrl()} />
+          <div className="container py-5 d-flex justify-content-around align-items-center">
+            <div className="text-light">
+              <img src={myChart.getUrl()} />
+            </div>
+            <div className="text-light">
+              <img src={myChartTwo.getUrl()} />
+            </div>
+            <div className="text-light">
+              <img src={myChartThree.getUrl()} />
+            </div>
           </div>
-          <div className="text-light">
-          <img src={myChartTwo.getUrl()} />
-          </div>
-          <div className="text-light">
-          <img src={myChartThree.getUrl()} />
-          </div>
-        </div>
 
-        <div className="container p-1">
-          <h4 id="recActivities" className="my-3 py-1 text-black">
-            Recent Activities
-          </h4>
+          <div className="container p-1">
+            <h4 id="recActivities" className="my-3 py-1 text-black">
+              Recent Activities
+            </h4>
 
-          <table className="table-dark  activities-table">
-            <thead>
-              <tr>
-                <th scope="col">Date</th>
-                <th scope="col">Category</th>
-                <th scope="col">Activity</th>
-                <th scope="col">Duration</th>
-                <th scope="col">Comments</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>4/10/2024</td>
-                <td>Meals</td>
-                <td>Dinner</td>
-                <td>1</td>
-                <td>Made chicken parm tn. mmmm.</td>
-              </tr>
-            </tbody>
-          </table>
+            <table className="table-dark  activities-table">
+              <thead>
+                <tr>
+                  <th scope="col">Date</th>
+                  <th scope="col">Category</th>
+                  <th scope="col">Activity</th>
+                  <th scope="col">Duration</th>
+                  <th scope="col">Comments</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>4/10/2024</td>
+                  <td>Meals</td>
+                  <td>Dinner</td>
+                  <td>1</td>
+                  <td>Made chicken parm tn. mmmm.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
-    </div>
+
+    </main>
+
   );
 };
 
