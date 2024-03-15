@@ -83,6 +83,7 @@ export default function LogActivity() {
 
   return (
     <>
+
       <main>
 
         <div className="container mt-5 sub-form px-5 py-4" id='log-activity-sub'>
@@ -90,12 +91,7 @@ export default function LogActivity() {
           <h2 className=" text-white mb-3 mt-1">
             Log New Activity
           </h2>
-      <div>
-        <div
-          className="container mt-5 sub-form px-5 py-4"
-          id="log-activity-sub"
-        >
-          <h2 className=" text-white mb-3 mt-1">Log New Activity</h2>
+
           <form onSubmit={handleSubmit}>
             <div className="mb-3">
               <label htmlFor="when" className="form-label green-title">
@@ -200,8 +196,6 @@ export default function LogActivity() {
             </div>
           </form>
         </div>
-
-      </main>
 
     </>
   );

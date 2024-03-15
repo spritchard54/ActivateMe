@@ -216,6 +216,7 @@ const Dashboard = () => {
             </div>
           </div>
 
+
           <div className="container py-5 d-flex justify-content-around align-items-center">
             <div className="text-light">
               <img src={myChart.getUrl()} />
@@ -227,6 +228,7 @@ const Dashboard = () => {
               <img src={myChartThree.getUrl()} />
             </div>
           </div>
+
 
           <div className="container p-1">
             <h4 id="recActivities" className="my-3 py-1 text-black">
