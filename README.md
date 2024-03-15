@@ -31,6 +31,7 @@ ActivateMe is a collaborative project designed to empower users in tracking thei
 [Apollo Client](https://www.apollographql.com/docs/react/) - A comprehensive state management library for managing GraphQL operations in React applications.<br>
 [GraphQL](https://graphql.org/) - A query language for your API, and a runtime for executing those queries with your existing data.<br>
 [JWT Decode](https://github.com/auth0/jwt-decode) - A library for decoding JSON Web Tokens (JWTs).<br>
+[EmailJS](https://www.emailjs.com/) - Send email directly from your code – no server side code required.
 
 
 ## Usage
@@ -48,7 +49,7 @@ Track your trends and patterns to make informed decisions about your lifestyle a
 ## Image
 
 
-
+![Homepage](<Screenshot 2024-03-15 at 1.09.10 AM.png>)
 
 
 ## Contributors
@@ -58,6 +59,7 @@ Track your trends and patterns to make informed decisions about your lifestyle a
 3. [Steve Pritchard](https://github.com/spritchard54) - Project Initiator / Web Developer
 4. [Lisa Lar](https://github.com/ayoleese) - Frontend Developer
 5. [Tucker McKee](https://github.com/McKee-T) - Backend Developer
+
 
 ## License
 
