@@ -1,7 +1,12 @@
-import { useState } from 'react';
+import { useState } from "react";
 import { useNavigate, useParams, Link } from "react-router-dom";
-import { QUERY_USER, QUERY_ME, GET_ACTIVITYTYPE, GET_CATEGORIES } from "../utils/queries";
-import { ADD_ACTIVITY } from '../utils/mutations';
+import {
+  QUERY_USER,
+  QUERY_ME,
+  GET_ACTIVITYTYPE,
+  GET_CATEGORIES,
+} from "../utils/queries";
+import { ADD_ACTIVITY } from "../utils/mutations";
 import { useQuery, useMutation } from "@apollo/client"; // Import gql from @apollo/client
 import Auth from "../utils/auth";
 
@@ -13,11 +18,14 @@ export default function LogActivity() {
 
   const user = data?.me || data?.user || {};
 
-  const { loading: categoriesLoading, data: categoriesData } = useQuery(GET_CATEGORIES);
+  const { loading: categoriesLoading, data: categoriesData } =
+    useQuery(GET_CATEGORIES);
 
-  const { loading: activityTypesLoading, data: activityTypesData } = useQuery(GET_ACTIVITYTYPE);
+  const { loading: activityTypesLoading, data: activityTypesData } =
+    useQuery(GET_ACTIVITYTYPE);
 
-  const [addActivity, { error: addActivityError, data: addActivityData }] = useMutation(ADD_ACTIVITY);
+  const [addActivity, { error: addActivityError, data: addActivityData }] =
+    useMutation(ADD_ACTIVITY);
 
   const [formData, setFormData] = useState({
     when: "",
@@ -45,14 +53,12 @@ export default function LogActivity() {
           activityType: formData.activity,
           duration: parseFloat(formData.duration),
           commentText: formData.comments,
-          when: formData.when
-        }
-      })
+          when: formData.when,
+        },
+      });
       console.log(data);
-    } catch (error) {
-
-    }
-    window.location.assign('/dashboard');
+    } catch (error) {}
+    window.location.assign("/dashboard");
     console.log("Form submitted:", formData);
   };
 
@@ -67,20 +73,24 @@ export default function LogActivity() {
   if (!user?.username) {
     return (
       <div className="container-fluid w-75 my-5 text-center">
-        <h4>You need to be logged in to see this. Use the navigation links above to sign up or log in!</h4>
+        <h4>
+          You need to be logged in to see this. Use the navigation links above
+          to sign up or log in!
+        </h4>
       </div>
     );
   }
 
   return (
     <>
-      <main>
+
 
         <div className="container mt-5 sub-form px-5 py-4" id='log-activity-sub'>
 
           <h2 className=" text-white mb-3 mt-1">
             Log New Activity
           </h2>
+
           <form onSubmit={handleSubmit}>
             <div className="mb-3">
               <label htmlFor="when" className="form-label green-title">
@@ -120,24 +130,35 @@ export default function LogActivity() {
             </div>
 
             <div className="mb-3">
-
               <label htmlFor="activity" className="form-label green-title">
                 Select an activity
               </label>
 
               <label htmlFor="activity" className="form-label float-end">
-
-                <Link to="/create-activity" className='blue-title' id='create-activity-link'>
+                <Link
+                  to="/create-activity"
+                  className="blue-title"
+                  id="create-activity-link"
+                >
                   Create a new Activity
                 </Link>
-
               </label>
 
-              <select className="form-select" id="activity" name="activity" onChange={handleInputChange} value={formData.activity} required>
+              <select
+                className="form-select"
+                id="activity"
+                name="activity"
+                onChange={handleInputChange}
+                value={formData.activity}
+                required
+              >
                 {/* Map over activity types data to generate options */}
-                {activityTypesData && activityTypesData.activityTypes.map(activityType => (
-                  <option key={activityType._id} value={activityType._id}>{activityType.actName}</option>
-                ))}
+                {activityTypesData &&
+                  activityTypesData.activityTypes.map((activityType) => (
+                    <option key={activityType._id} value={activityType._id}>
+                      {activityType.actName}
+                    </option>
+                  ))}
               </select>
             </div>
 
@@ -155,8 +176,6 @@ export default function LogActivity() {
                 required
               />
 
-
-
               <label htmlFor="comments" className="form-label green-title mt-3">
                 Anything memorable about this activity?
               </label>
@@ -173,14 +192,9 @@ export default function LogActivity() {
               <button type="submit" className="btn mt-4 submit-btn w-100">
                 Log Activity
               </button>
-
-              </div>
-
+            </div>
           </form>
-
         </div>
-
-      </main>
 
     </>
   );

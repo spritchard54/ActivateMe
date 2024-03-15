@@ -97,14 +97,11 @@ export const GET_ACTIVITY = gql`
 `;
 
 export const GET_ACTIVITYTYPE = gql`
-query activityTypes ($_id: ID!) {
-  activityTypes (_id: $_id) {
+query activityTypes {
+  activityTypes {
     _id
     actName
-    user {
-      _id
-      username
-    }
+    
   }
 }
 `;
