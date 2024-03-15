@@ -13,109 +13,6 @@ import QuickChart from "quickchart-js";
 // Chart.register(ChartDataLabels);
 
 const myChart = new QuickChart();
-myChart.setWidth(200).setHeight(200).setBackgroundColor("transparent");
-myChart.setConfig({
-  type: "doughnut",
-  data: {
-    labels: ["Work", "Meals", "Sleep", "Exercise", "Mindfulness"],
-    datasets: [
-      {
-        label: "Catgeory",
-        data: [8, 1, 2, 2, 4],
-      },
-    ],
-  },
-  options: {
-    legend: {
-      display: true,
-      labels: {
-        fontSize: 7,
-        fontColor: "white",
-        boxWidth: 15,
-      },
-    },
-    title: {
-      display: true,
-      text: "Today",
-      fontColor: "#ffffff",
-    },
-    plugins: {
-      datalabels: {
-        color: "white",
-      },
-    },
-  },
-});
-
-const myChartTwo = new QuickChart();
-myChartTwo.setWidth(200).setHeight(200).setBackgroundColor("transparent");
-myChartTwo.setConfig({
-  type: "doughnut",
-  data: {
-    labels: ["Work", "Meals", "Sleep", "Exercise", "Mindfulness"],
-    datasets: [
-      {
-        label: "Catgeory",
-        data: [4, 4, 4, 2, 4],
-      },
-    ],
-  },
-  options: {
-    legend: {
-      display: true,
-      labels: {
-        fontSize: 7,
-        fontColor: "white",
-        boxWidth: 15,
-      },
-    },
-    title: {
-      display: true,
-      text: "Weekly",
-      fontColor: "#ffffff",
-    },
-    plugins: {
-      datalabels: {
-        color: "white",
-      },
-    },
-  },
-});
-
-const myChartThree = new QuickChart();
-myChartThree.setWidth(200).setHeight(200).setBackgroundColor("transparent");
-myChartThree.setConfig({
-  type: "doughnut",
-  data: {
-    labels: ["Work", "Meals", "Sleep", "Exercise", "Mindfulness"],
-    datasets: [
-      {
-        label: "Catgeory",
-        data: [160, 93, 240, 28, 4],
-      },
-    ],
-  },
-  options: {
-    legend: {
-      display: true,
-      labels: {
-        fontSize: 7,
-        fontColor: "white",
-        boxWidth: 15,
-      },
-    },
-    title: {
-      display: true,
-      text: "Monthly",
-      fontColor: "#ffffff",
-    },
-    plugins: {
-      datalabels: {
-        color: "white",
-      },
-    },
-  },
-});
 
 // console.log(myChart.getUrl());
 
@@ -136,11 +33,149 @@ const Dashboard = () => {
   const { loading, data } = useQuery(userParam ? QUERY_USER : QUERY_ME, {
     variables: { username: userParam },
   });
-console.log(data);
+  console.log(data);
   const user = data?.me || data?.user || {};
   const myActivities = data?.me || data?.user || {};
   let reverse = myActivities.activities?.toReversed();
-  console.log(reverse)
+
+  // This is currently set up to show everything, not just today
+  const myObject = {};
+  if (data?.me) {
+    for (let index = 0; index < data.me.activities.length; index++) {
+      myObject[data.me.activities[index].category.catName] = 0;
+    }
+    for (let index = 0; index < data.me.activities.length; index++) {
+      myObject[data.me.activities[index].category.catName] +=
+        data.me.activities[index].duration;
+    }
+  }
+
+  const myLables = Object.keys(myObject);
+  const myData = Object.values(myObject);
+  
+  // const myObjectWeek = {};
+  // if (data?.me) {
+  //   for (let index = 0; index < data.me.activities.length; index++) {
+  //     myObjectWeek[data.me.activities[index].category.catName] = 0;
+  //   }
+  //   for (let index = 0; index < data.me.activities.length; index++) {
+  //     if (){
+  //       // need to use javascript to determine current time, then compare that to the activity date/time is it more than a week, more than a month etc.
+  //       myObjectWeek[data.me.activities[index].category.catName] +=
+  //       data.me.activities[index].duration;
+  //     }
+  //   }
+  // }
+
+  // console.log(myObject);
+  // const myLablesWeek = Object.keys(myObjectWeek);
+  // const myDataWeek = Object.values(myObjectWeek);
+
+  myChart.setWidth(200).setHeight(200).setBackgroundColor("transparent");
+  myChart.setConfig({
+    type: "doughnut",
+    data: {
+      labels: myLables,
+      datasets: [
+        {
+          label: "Catgeory",
+          data: myData,
+        },
+      ],
+    },
+    options: {
+      legend: {
+        display: true,
+        labels: {
+          fontSize: 7,
+          fontColor: "white",
+          boxWidth: 15,
+        },
+      },
+      title: {
+        display: true,
+        text: "Today",
+        fontColor: "#ffffff",
+      },
+      plugins: {
+        datalabels: {
+          color: "white",
+        },
+      },
+    },
+  });
+
+  const myChartTwo = new QuickChart();
+  myChartTwo.setWidth(200).setHeight(200).setBackgroundColor("transparent");
+  myChartTwo.setConfig({
+    type: "doughnut",
+    data: {
+      labels: ["Work", "Meals", "Sleep", "Exercise", "Mindfulness"],
+      datasets: [
+        {
+          label: "Catgeory",
+          data: [4, 4, 4, 2, 4],
+        },
+      ],
+    },
+    options: {
+      legend: {
+        display: true,
+        labels: {
+          fontSize: 7,
+          fontColor: "white",
+          boxWidth: 15,
+        },
+      },
+      title: {
+        display: true,
+        text: "Weekly",
+        fontColor: "#ffffff",
+      },
+      plugins: {
+        datalabels: {
+          color: "white",
+        },
+      },
+    },
+  });
+
+  const myChartThree = new QuickChart();
+  myChartThree.setWidth(200).setHeight(200).setBackgroundColor("transparent");
+  myChartThree.setConfig({
+    type: "doughnut",
+    data: {
+      labels: ["Work", "Meals", "Sleep", "Exercise", "Mindfulness"],
+      datasets: [
+        {
+          label: "Catgeory",
+          data: [160, 93, 240, 28, 4],
+        },
+      ],
+    },
+    options: {
+      legend: {
+        display: true,
+        labels: {
+          fontSize: 7,
+          fontColor: "white",
+          boxWidth: 15,
+        },
+      },
+      title: {
+        display: true,
+        text: "Monthly",
+        fontColor: "#ffffff",
+      },
+      plugins: {
+        datalabels: {
+          color: "white",
+        },
+      },
+    },
+  });
+
+  console.log(reverse);
   // navigate to personal profile page if username is yours
   if (Auth.loggedIn() && Auth.getUser().data.username === userParam) {
     return <Navigate to="/Dashboard" />;
@@ -183,10 +218,10 @@ console.log(data);
             <img src={myChart.getUrl()} />
           </div>
           <div className="text-light">
-          <img src={myChartTwo.getUrl()} />
+            <img src={myChartTwo.getUrl()} />
           </div>
           <div className="text-light">
-          <img src={myChartThree.getUrl()} />
+            <img src={myChartThree.getUrl()} />
           </div>
         </div>
 
@@ -206,27 +241,16 @@ console.log(data);
               </tr>
             </thead>
             <tbody>
-           
-              {reverse.slice(0 , 5).map(activity => {
+              {reverse.slice(0, 5).map((activity) => {
                 return (
-                <tr>
-                  <td>
-                    {activity.when}
-                  </td>
-                  <td>
-                    {activity.category.catName}
-                  </td>
-                  <td>
-                   UPDATE
-                  </td>
-                  <td>
-                    {activity.duration}
-                  </td>
-                  <td>
-                    {activity.commentText}
-                  </td>
-                </tr>
-                )
+                  <tr>
+                    <td>{activity.when}</td>
+                    <td>{activity.category.catName}</td>
+                    <td>UPDATE</td>
+                    <td>{activity.duration}</td>
+                    <td>{activity.commentText}</td>
+                  </tr>
+                );
               })}
             </tbody>
           </table>
