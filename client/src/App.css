@@ -50,11 +50,6 @@ footer {
   /* box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.123); */
 }
 
-.text:hover {
-  color: var(--hghlght);
-}
-
-
 /* Buttons */
 .logAct {
   background-color: var(--btns);
