@@ -3,8 +3,8 @@ import Auth from "../utils/auth";
 
 const styles = {
   footer: {
-    position: "fixed",
-    bottom: 0,
+    // position: "fixed",
+    // bottom: 0,
     width: "100%",
     color: "#fff",
     padding: "30px 0",

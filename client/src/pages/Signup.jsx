@@ -131,7 +131,7 @@ const Signup = () => {
 
       </div>
 
-      <div className='container d-flex justify-content-center gap-2'>
+      <div className='container d-flex justify-content-center gap-2' id='signup-main'>
         <p className='text-light'>Already a member?</p>
         <a className="green-title" href='/login'>Log in!</a>
       </div>

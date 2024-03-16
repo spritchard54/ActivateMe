@@ -66,7 +66,7 @@ const Dashboard = () => {
   const myLables = Object.keys(myObject);
   const myData = Object.values(myObject);
 
-  myChart.setWidth(200).setHeight(200).setBackgroundColor("transparent");
+  myChart.setWidth(180).setHeight(180).setBackgroundColor("transparent");
   myChart.setConfig({
     type: "doughnut",
     data: {
@@ -128,7 +128,7 @@ const Dashboard = () => {
   const myDataWeek = Object.values(myObjectWeek);
 
   const myChartTwo = new QuickChart();
-  myChartTwo.setWidth(200).setHeight(200).setBackgroundColor("transparent");
+  myChartTwo.setWidth(180).setHeight(180).setBackgroundColor("transparent");
   myChartTwo.setConfig({
     type: "doughnut",
     data: {
@@ -190,7 +190,7 @@ const Dashboard = () => {
   const myDataMonth = Object.values(myObjectMonth);
   
   const myChartThree = new QuickChart();
-  myChartThree.setWidth(200).setHeight(200).setBackgroundColor("transparent");
+  myChartThree.setWidth(180).setHeight(180).setBackgroundColor("transparent");
   myChartThree.setConfig({
     type: "doughnut",
     data: {
@@ -236,7 +236,7 @@ const Dashboard = () => {
 
   if (!user?.username) {
     return (
-      <div className="container-fluid w-75 my-5 text-center">
+      <div className="container-fluid w-75 my-5 mt-5 text-center">
         <h4>
           You need to be logged in to see this. Use the navigation links above
           to sign up or log in!
@@ -247,10 +247,10 @@ const Dashboard = () => {
 
   return (
     <main>
-      <div className="container-fluid d-flex justify-content-center align-items-center">
-        <div className="container sub-form p-5">
-          <div className="d-flex justify-content-between align-items-center">
-            <h2 className="white-text">Dashboard</h2>
+    <div className="container-fluid d-flex justify-content-center align-items-center">
+      <div className="container sub-form p-5 mt-4" id="dashboard-main">
+        <div className="d-flex justify-content-between align-items-center">
+          <h2 className="white-text">Dashboard</h2>
 
             <div className="d-flex align-items-center gap-3">
               <button onClick={logButton} className="logAct">
@@ -263,17 +263,17 @@ const Dashboard = () => {
             </div>
           </div>
 
-          <div className="container py-5 d-flex justify-content-around align-items-center">
-            <div className="text-light">
-              <img src={myChart.getUrl()} />
-            </div>
-            <div className="text-light">
-              <img src={myChartTwo.getUrl()} />
-            </div>
-            <div className="text-light">
-              <img src={myChartThree.getUrl()} />
-            </div>
+        <div className="container py-5 d-flex justify-content-around align-items-center flex-wrap">
+          <div className="text-light">
+            <img src={myChart.getUrl()} />
           </div>
+          <div className="text-light">
+            <img src={myChartTwo.getUrl()} />
+          </div>
+          <div className="text-light">
+            <img src={myChartThree.getUrl()} />
+          </div>
+        </div>
 
           <div className="container p-1">
             <h4 id="recActivities" className="my-3 py-1 text-black">

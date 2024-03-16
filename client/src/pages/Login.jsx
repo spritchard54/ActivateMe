@@ -111,7 +111,7 @@ const Login = (props) => {
         </div>
       </div>
 
-      <div className='container d-flex justify-content-center gap-2'>
+      <div className='container d-flex justify-content-center gap-2' id='login-main'>
         <p className='text-light'>Not a member?</p>
         <a className="green-title" href='/signup'>Sign up!</a>
       </div>

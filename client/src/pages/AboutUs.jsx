@@ -3,10 +3,11 @@ export default function AboutUs() {
 
   return (
 
-    <main id="about-img">
+    // <main id="about-img">
 
-      <div className="container-fluid w-75 p-5 d-flex justify-content-center align-items-center">
-        <div className="container sub-form p-5 my-5">
+    <div id="about-img">
+      <div className="container-fluid w-75 p-5 d-flex justify-content-center align-items-center" id="about-main">
+        <div className="container sub-form p-5 mt-4">
           <div className="d-flex justify-content-between align-items-center">
             <h2 className="green-title">About Page</h2>
           </div>
@@ -48,7 +49,9 @@ export default function AboutUs() {
         </div>
       </div>
 
-    </main>
+    </div>
+
+    // </main>
 
   );
 }
