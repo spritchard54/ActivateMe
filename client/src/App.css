@@ -6,7 +6,7 @@
 main::before {
   content: ' ';
   display: block;
-  height: 120px;
+  height: 110px;
 }
 
 header {
@@ -205,4 +205,26 @@ flex-direction: column;
 
 #create-activity-link:active {
   text-decoration: underline;
+}
+
+/* Page Format Styles */
+
+#login-main {
+  margin-bottom: 240px;
+}
+
+#signup-main {
+  margin-bottom: 145px;
+}
+
+#dashboard-main {
+  margin-bottom: 80px;
+}
+
+#new-activity-main {
+  margin-bottom: 310px;
+}
+
+#about-main {
+  margin-top: 100px;
 }

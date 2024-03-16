@@ -70,7 +70,7 @@ export default function CreateActivity() {
 
         <div className="container my-4 w-50 d-flex align-items-center" id='new-activity-box'>
 
-          <div className="container sub-form pb-3 px-5 pt-4">
+          <div className="container sub-form pb-3 px-5 pt-4 mt-5" id='new-activity-main'>
 
             <h2 className="mb-2">
               Create New Activity
