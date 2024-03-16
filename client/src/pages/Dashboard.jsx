@@ -4,6 +4,7 @@ import { Navigate, useParams } from "react-router-dom";
 import { useQuery } from "@apollo/client";
 import { QUERY_USER, QUERY_ME } from "../utils/queries";
 import Auth from "../utils/auth";
+import dayjs from "dayjs";
 
 import "../css/dash.css";
 
@@ -33,42 +34,37 @@ const Dashboard = () => {
   const { loading, data } = useQuery(userParam ? QUERY_USER : QUERY_ME, {
     variables: { username: userParam },
   });
-  console.log(data);
+  // console.log(data);
   const user = data?.me || data?.user || {};
   const myActivities = data?.me || data?.user || {};
   let reverse = myActivities.activities?.toReversed();
 
-  // This is currently set up to show everything, not just today
+  const today = dayjs().format("YYYY-MM-DD");
+  const lastSeven = dayjs().subtract(7, "day").format("YYYY-MM-DD");
+  const lastThirty = dayjs().subtract(30, "day").format("YYYY-MM-DD");
+  console.log("30 Days ago was" , lastThirty)
+  console.log("Seven days ago ", lastSeven);
+
+  // Today
   const myObject = {};
   if (data?.me) {
+    // returns the categories
     for (let index = 0; index < data.me.activities.length; index++) {
-      myObject[data.me.activities[index].category.catName] = 0;
+      if (data?.me.activities[index].when === today) {
+        myObject[data.me.activities[index].category.catName] = 0;
+      }
     }
+    // returns the duration of the categories if they have activities for current day
     for (let index = 0; index < data.me.activities.length; index++) {
-      myObject[data.me.activities[index].category.catName] += data.me.activities[index].duration;
+      if (data?.me.activities[index].when === today) {
+        myObject[data.me.activities[index].category.catName] +=
+          data.me.activities[index].duration;
+      }
     }
   }
 
   const myLables = Object.keys(myObject);
   const myData = Object.values(myObject);
-
-  // const myObjectWeek = {};
-  // if (data?.me) {
-  //   for (let index = 0; index < data.me.activities.length; index++) {
-  //     myObjectWeek[data.me.activities[index].category.catName] = 0;
-  //   }
-  //   for (let index = 0; index < data.me.activities.length; index++) {
-  //     if (){
-  //       // need to use javascript to determine current time, then compare that to the activity date/time is it more than a week, more than a month etc.
-  //       myObjectWeek[data.me.activities[index].category.catName] +=
-  //       data.me.activities[index].duration;
-  //     }
-  //   }
-  // }
-
-  // console.log(myObject);
-  // const myLablesWeek = Object.keys(myObjectWeek);
-  // const myDataWeek = Object.values(myObjectWeek);
 
   myChart.setWidth(180).setHeight(180).setBackgroundColor("transparent");
   myChart.setConfig({
@@ -104,16 +100,43 @@ const Dashboard = () => {
     },
   });
 
+  // Week
+  const myObjectWeek = {};
+  if (data?.me) {
+    // returns the categories
+    for (let index = 0; index < data.me.activities.length; index++) {
+      if (
+        data?.me.activities[index].when >= lastSeven &&
+        data?.me.activities[index].when <= today
+      ) {
+        myObjectWeek[data.me.activities[index].category.catName] = 0;
+      }
+    }
+    // returns the duration of the categories if they have activities for current day
+    for (let index = 0; index < data.me.activities.length; index++) {
+      if (
+        data?.me.activities[index].when >= lastSeven &&
+        data?.me.activities[index].when <= today
+      ) {
+        myObjectWeek[data.me.activities[index].category.catName] +=
+          data.me.activities[index].duration;
+      }
+    }
+  }
+
+  const myLablesWeek = Object.keys(myObjectWeek);
+  const myDataWeek = Object.values(myObjectWeek);
+
   const myChartTwo = new QuickChart();
   myChartTwo.setWidth(180).setHeight(180).setBackgroundColor("transparent");
   myChartTwo.setConfig({
     type: "doughnut",
     data: {
-      labels: ["Work", "Meals", "Sleep", "Exercise", "Mindfulness"],
+      labels: myLablesWeek,
       datasets: [
         {
           label: "Catgeory",
-          data: [4, 4, 4, 2, 4],
+          data: myDataWeek,
         },
       ],
     },
@@ -128,7 +151,7 @@ const Dashboard = () => {
       },
       title: {
         display: true,
-        text: "Weekly",
+        text: "Last 7 Days",
         fontColor: "#ffffff",
       },
       plugins: {
@@ -139,16 +162,43 @@ const Dashboard = () => {
     },
   });
 
+  // Month
+  const myObjectMonth = {};
+  if (data?.me) {
+    // returns the categories
+    for (let index = 0; index < data.me.activities.length; index++) {
+      if (
+        data?.me.activities[index].when >= lastThirty &&
+        data?.me.activities[index].when <= today
+      ) {
+        myObjectMonth[data.me.activities[index].category.catName] = 0;
+      }
+    }
+    // returns the duration of the categories if they have activities for current day
+    for (let index = 0; index < data.me.activities.length; index++) {
+      if (
+        data?.me.activities[index].when >= lastThirty &&
+        data?.me.activities[index].when <= today
+      ) {
+        myObjectMonth[data.me.activities[index].category.catName] +=
+          data.me.activities[index].duration;
+      }
+    }
+  }
+
+  const myLablesMonth = Object.keys(myObjectMonth);
+  const myDataMonth = Object.values(myObjectMonth);
+  
   const myChartThree = new QuickChart();
   myChartThree.setWidth(180).setHeight(180).setBackgroundColor("transparent");
   myChartThree.setConfig({
     type: "doughnut",
     data: {
-      labels: ["Work", "Meals", "Sleep", "Exercise", "Mindfulness"],
+      labels: myLablesMonth,
       datasets: [
         {
           label: "Catgeory",
-          data: [160, 93, 240, 28, 4],
+          data: myDataMonth,
         },
       ],
     },
@@ -163,7 +213,7 @@ const Dashboard = () => {
       },
       title: {
         display: true,
-        text: "Monthly",
+        text: "Last 30 Days",
         fontColor: "#ffffff",
       },
       plugins: {
@@ -175,7 +225,7 @@ const Dashboard = () => {
   });
 
   // console.log(reverse);
-  
+
   if (Auth.loggedIn() && Auth.getUser().data.username === userParam) {
     return <Navigate to="/Dashboard" />;
   }
@@ -186,7 +236,7 @@ const Dashboard = () => {
 
   if (!user?.username) {
     return (
-      <div className="container-fluid w-75 my-5 text-center">
+      <div className="container-fluid w-75 my-5 mt-5 text-center">
         <h4>
           You need to be logged in to see this. Use the navigation links above
           to sign up or log in!
@@ -202,16 +252,16 @@ const Dashboard = () => {
         <div className="d-flex justify-content-between align-items-center">
           <h2 className="white-text">Dashboard</h2>
 
-          <div className="d-flex align-items-center gap-3">
-            <button onClick={logButton} className="logAct">
-              Log Activity
-            </button>
+            <div className="d-flex align-items-center gap-3">
+              <button onClick={logButton} className="logAct">
+                Log Activity
+              </button>
 
-            <button onClick={viewActivityLog} className=" logAct">
-              View Activities
-            </button>
+              <button onClick={viewActivityLog} className=" logAct">
+                View Activities
+              </button>
+            </div>
           </div>
-        </div>
 
         <div className="container py-5 d-flex justify-content-around align-items-center flex-wrap">
           <div className="text-light">
@@ -225,40 +275,40 @@ const Dashboard = () => {
           </div>
         </div>
 
-        <div className="container p-1">
-          <h4 id="recActivities" className="my-3 py-1 text-black">
-            Recent Activities
-          </h4>
+          <div className="container p-1">
+            <h4 id="recActivities" className="my-3 py-1 text-black">
+              Recent Activities
+            </h4>
 
-          <table className="table table-dark table-striped activities-table">
-            <thead>
-              <tr>
-                <th scope="col">Date</th>
-                <th scope="col">Category</th>
-                <th scope="col">Activity</th>
-                <th scope="col">Duration</th>
-                <th scope="col">Comments</th>
-              </tr>
-            </thead>
-            <tbody>
-              {reverse.slice(0, 6).map((activity) => {
-                return (
-                  <>
-                  <tr>
-                    <td>{activity.when}</td>
-                    <td>{activity.category.catName}</td>
-                    <td>UPDATE</td>
-                    <td>{activity.duration}</td>
-                    <td>{activity.commentText}</td>
-                  </tr>
-                  </>
-                );
-              })}
-            </tbody>
-          </table>
+            <table className="table table-dark table-striped activities-table">
+              <thead>
+                <tr>
+                  <th scope="col">Date</th>
+                  <th scope="col">Category</th>
+                  <th scope="col">Activity</th>
+                  <th scope="col">Duration</th>
+                  <th scope="col">Comments</th>
+                </tr>
+              </thead>
+              <tbody>
+                {reverse.slice(0, 5).map((activity) => {
+                  return (
+                    <>
+                      <tr>
+                        <td key={activity.ID}>{activity.when}</td>
+                        <td key={activity.ID}>{activity.category.catName}</td>
+                        <td>UPDATE</td>
+                        <td key={activity.ID}>{activity.duration}</td>
+                        <td key={activity.ID}>{activity.commentText}</td>
+                      </tr>
+                    </>
+                  );
+                })}
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
-    </div>
     </main>
   );
 };
