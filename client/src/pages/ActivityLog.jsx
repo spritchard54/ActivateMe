@@ -55,7 +55,7 @@ export default function ActivityLog() {
               </tr>
             </thead>
             <tbody>
-              {reverse.slice(0, 6).map((activity) => {
+              {reverse.slice(0, 100).map((activity) => {
                 return (
                   <>
                     <tr>
