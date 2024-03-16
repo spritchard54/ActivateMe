@@ -228,3 +228,7 @@ flex-direction: column;
 #about-main {
   margin-top: 100px;
 }
+
+#activity-log-main {
+  margin-bottom: 120px;
+}

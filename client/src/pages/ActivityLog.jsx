@@ -38,7 +38,7 @@ export default function ActivityLog() {
 
   return (
     <main id="log-new">
-      <div className="container-fluid w-75 mt-4">
+      <div className="container-fluid w-75 mt-4" id="activity-log-main">
         <div className="container p-1">
           <h2 id="recActivities" className="my-3 py-1 text-black">
             Activity Log
