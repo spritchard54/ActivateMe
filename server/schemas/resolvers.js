@@ -139,14 +139,26 @@ const resolvers = {
     },
 
     // Mutation to delete an activity
-    deleteActivity: async (parent, { _id }, context) => {
+    deleteActivity: async (
+      parent,
+      { when, duration, commentText, category, activityType },
+      context
+    ) => {
+      const deleteActivity = await Activity.deleteOne({
+        when,
+        duration,
+        commentText,
+        category: category,
+        activityType: activityType,
+      });
       if (context.user) {
-        const deleteActivity = await Activity.findByIdAndDelete(_id);
-        if (!deleteActivity) {
-          throw new Error("Activity not found");
-        }
+        const userData = await User.findOneAndUpdate(
+          { _id: context.user._id },
+          { $pull: { activities: Activity._id } },
+          { new: true }
+        );
       }
-      return deletedActivity;
+      return deleteActivity;
     },
 
     // Example code

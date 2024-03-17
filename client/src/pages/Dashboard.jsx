@@ -3,6 +3,8 @@ import { useNavigate } from "react-router-dom";
 import { Navigate, useParams } from "react-router-dom";
 import { useQuery } from "@apollo/client";
 import { QUERY_USER, QUERY_ME } from "../utils/queries";
+import { useMutation } from "@apollo/client";
+import { DELETE_ACTIVITY } from "../utils/mutations";
 import Auth from "../utils/auth";
 import dayjs from "dayjs";
 import "../css/dash.css";
@@ -36,8 +38,8 @@ const Dashboard = () => {
   const today = dayjs().format("YYYY-MM-DD");
   const lastSeven = dayjs().subtract(7, "day").format("YYYY-MM-DD");
   const lastThirty = dayjs().subtract(30, "day").format("YYYY-MM-DD");
-  console.log("30 Days ago was", lastThirty);
-  console.log("Seven days ago ", lastSeven);
+  // console.log("30 Days ago was", lastThirty);
+  // console.log("Seven days ago ", lastSeven);
 
   // Today Chart
   const myObject = {};
@@ -213,6 +215,7 @@ const Dashboard = () => {
   });
 
   // console.log(reverse);
+  const [deleteActivity] = useMutation(DELETE_ACTIVITY);
 
   // Autho Code Begin
   if (Auth.loggedIn() && Auth.getUser().data.username === userParam) {
@@ -236,23 +239,12 @@ const Dashboard = () => {
   // Auth Code End
 
   // Delete Activity Start
-  const handleDeleteActivity = async (
-    category,
-    activityType,
-    duration,
-    commentText,
-    when
-  ) => {
+  const handleDeleteActivity = async ( when, duration, commentText, category, activityType) => {
     try {
       const { data } = await deleteActivity({
-        variables: {
-          category,
-          activityType,
-          duration,
-          commentText,
-          when,
-        },
+        variables: { when, duration, commentText, category, activityType },
       });
+      console.log(data);
     } catch (err) {
       console.error(err);
     }
@@ -319,7 +311,7 @@ const Dashboard = () => {
                         <td key={activity.ID}>{activity.commentText}</td>
                         <td className="d-flex justify-content-center">
                           <button
-                            onClick={handleDeleteActivity}
+                            onClick={() => handleDeleteActivity()}
                             className="btn btn-sm btn-secondary"
                           >
                             <span className="x">X</span>
