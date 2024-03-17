@@ -40,3 +40,14 @@ mutation addActivity($when: String!, $duration: Float!, $commentText: String!, $
   }
 }
 `
+export const ADD_ACTIVITYTYPE = gql`
+  mutation AddActivityType($actName: String!, $user: ID!) {
+    addActivityType(actName: $actName, user: $user) {
+      _id
+      actName
+      user {
+        _id
+      }
+    }
+  }
+`
