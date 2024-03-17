@@ -207,6 +207,11 @@ flex-direction: column;
   text-decoration: underline;
 }
 
+.x {
+  color: var(--hghlght);
+  font-weight: bolder;
+}
+
 /* Page Format Styles */
 
 #login-main {

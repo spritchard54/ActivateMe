@@ -26,8 +26,18 @@ export const ADD_USER = gql`
 
 
 export const ADD_ACTIVITY = gql`
-mutation addActivity($when: String!, $duration: Float!, $commentText: String!, $category: ID!, $activityType: ID!){
-  addActivity(when: $when, duration: $duration, commentText: $commentText, category: $category, activityType: $activityType){
+mutation addActivity(
+  $when: String!, 
+  $duration: Float!, 
+  $commentText: String!, 
+  $category: ID!, 
+  $activityType: ID!){
+  addActivity(
+    when: $when, 
+    duration: $duration, 
+    commentText: $commentText, 
+    category: $category, 
+    activityType: $activityType){
         duration
         when
         commentText
@@ -39,4 +49,30 @@ mutation addActivity($when: String!, $duration: Float!, $commentText: String!, $
         }
   }
 }
-`
+`;
+
+export const DELETE_ACTIVITY = gql`
+mutation deleteActivity(
+  $when: String!, 
+  $duration: Float!, 
+  $commentText: String!, 
+  $category: ID!, 
+  $activityType: ID!){
+  deleteActivity(
+    when: $when, 
+    duration: $duration, 
+    commentText: $commentText, 
+    category: $category, 
+    activityType: $activityType){
+        duration
+        when
+        commentText
+        category{
+          catName
+        }
+        activityType{
+          actName
+        }
+  }
+}
+`;
