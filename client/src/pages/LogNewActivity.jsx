@@ -43,6 +43,7 @@ export default function LogActivity() {
     });
   };
 
+ 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -62,6 +63,7 @@ export default function LogActivity() {
     console.log("Form submitted:", formData);
   };
 
+   // Login Authorization Begin
   if (Auth.loggedIn() && Auth.getUser().data.username === userParam) {
     return <Navigate to="/Dashboard" />;
   }
@@ -80,6 +82,7 @@ export default function LogActivity() {
       </div>
     );
   }
+  // Login Authorization End
 
   return (
     <>

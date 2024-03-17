@@ -52,6 +52,9 @@ export default function ActivityLog() {
                 <th scope="col">Activity</th>
                 <th scope="col">Duration</th>
                 <th scope="col">Comments</th>
+                <th scope="col" className="text-center">
+                  Delete
+                </th>
               </tr>
             </thead>
             <tbody>
@@ -64,6 +67,11 @@ export default function ActivityLog() {
                       <td>UPDATE</td>
                       <td>{activity.duration}</td>
                       <td>{activity.commentText}</td>
+                      <td className="d-flex justify-content-center">
+                        <button className="btn btn-sm btn-secondary">
+                          <span className="x">X</span>
+                        </button>
+                      </td>
                     </tr>
                   </>
                 );
