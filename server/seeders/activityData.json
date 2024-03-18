@@ -1,0 +1,9 @@
+[
+    {
+        "activityType": "Breakfast",
+        "when":  "2024/03/17",
+        "duration": 1,
+        "commentText": "This was fun",
+        "category": "Meals"
+    }
+]
