@@ -11,15 +11,9 @@ const resolvers = {
           .populate("activities")
           .populate({
             path: "activities",
-            populate: "category",
-          })
-          .populate({
-            path: "user.activities",
-            populate: {
-              path: "activityType",
-              model: "ActivityType",
-            },
+            populate: ['category', 'activityType'],
           });
+       
         return userData;
       }
       throw AuthenticationError;
