@@ -157,7 +157,7 @@ flex-direction: column;
 }
 
 .comments-col {
-  width: 400px;
+  /* width: 400px; */
 }
 
 /* Image Styles */
@@ -208,7 +208,7 @@ flex-direction: column;
 }
 
 .x {
-  color: var(--hghlght);
+  color: var(--whte);
   font-weight: bolder;
 }
 
@@ -235,5 +235,5 @@ flex-direction: column;
 }
 
 #activity-log-main {
-  margin-bottom: 120px;
+  margin-bottom: 580px;
 }
