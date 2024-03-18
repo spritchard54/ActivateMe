@@ -83,10 +83,10 @@ export default function ActivityLog() {
               {reverse.slice(0, 100).map((activity) => {
                 return (
                   <>
-                    <tr>
+                    <tr key={activity._id}>
                       <td>{activity.when}</td>
                       <td>{activity.category.catName}</td>
-                      <td>UPDATE</td>
+                      <td>{activity.activityType.actName}</td>
                       <td>{activity.duration}</td>
                       <td>{activity.commentText}</td>
                       <td className="d-flex justify-content-center">

@@ -15,7 +15,6 @@ const myChart = new QuickChart();
 // console.log(myChart.getUrl());
 
 const Dashboard = () => {
-  
   let navigate = useNavigate();
   const logButton = () => {
     let path = `/log-activity`;
@@ -215,12 +214,8 @@ const Dashboard = () => {
   });
 
   const [deleteActivity] = useMutation(DELETE_ACTIVITY, {
-    refetchQueries: [
-      QUERY_ME,
-      'me'
-    ]
+    refetchQueries: [QUERY_ME, "me"],
   });
-  
 
   // Autho Code Begin
   if (Auth.loggedIn() && Auth.getUser().data.username === userParam) {
@@ -244,7 +239,7 @@ const Dashboard = () => {
   // Delete Activity Start
   const handleDeleteActivity = async (activityId) => {
     try {
-      console.log(activityId)
+      console.log(activityId);
       const { data } = await deleteActivity({
         variables: { activityId },
       });
@@ -253,8 +248,6 @@ const Dashboard = () => {
       console.error(err);
     }
   };
-
-
 
   // Delete Activity End
 
@@ -309,11 +302,11 @@ const Dashboard = () => {
               <tbody>
                 {reverse.slice(0, 5).map((activity) => {
                   return (
-                    <>
-                      <tr>
+                    
+                      <tr key={activity._id}>
                         <td>{activity.when}</td>
                         <td>{activity.category.catName}</td>
-                        <td>UPDATE</td>
+                        <td>{activity.activityType.actName}</td>
                         <td>{activity.duration}</td>
                         <td>{activity.commentText}</td>
                         <td className="d-flex justify-content-center">
@@ -325,7 +318,7 @@ const Dashboard = () => {
                           </button>
                         </td>
                       </tr>
-                    </>
+                    
                   );
                 })}
               </tbody>
