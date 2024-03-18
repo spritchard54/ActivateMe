@@ -43,6 +43,7 @@ const Dashboard = () => {
   // Today Chart
   const myObject = {};
   if (data?.me) {
+    console.log(data.me)
     // returns the categories
     for (let index = 0; index < data.me.activities.length; index++) {
       if (data?.me.activities[index].when === today) {
@@ -57,6 +58,8 @@ const Dashboard = () => {
       }
     }
   }
+
+
   const myLables = Object.keys(myObject);
   const myData = Object.values(myObject);
   myChart.setWidth(180).setHeight(180).setBackgroundColor("transparent");
