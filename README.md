@@ -7,6 +7,7 @@ ActivateMe is a collaborative project designed to empower users in tracking thei
 - [Features](#features)
 - [Technologies](#technologies)
 - [Usage](#usage)
+- [Demo](#demo)
 - [Screenshots](#screenshots)
 - [Contributors](#contributors)
 - [License](#license)
@@ -36,6 +37,8 @@ ActivateMe is a collaborative project designed to empower users in tracking thei
 
 ## Usage
 
+Visit the [Deployed Site](https://activateme.onrender.com/)
+
 1. **Sign Up/Login:** Begin by creating an account or logging in to ActivateMe.
 2. **Dashboard:** Upon signing up or logging in, you'll be directed to your personalized Dashboard.
 3. **Log Activities:** Fill out your daily activities using the provided form, detailing your exercise routines, dietary intake, sleep patterns, and more. Ensure to submit your entries daily to maintain a comprehensive record of your habits over time.
@@ -45,6 +48,8 @@ ActivateMe is a collaborative project designed to empower users in tracking thei
 4. **Dashboard Insights:** Your Dashboard will showcase graphical representations of your logged activities, offering valuable insights into your daily routines and progress.
 Track your trends and patterns to make informed decisions about your lifestyle and productivity.
 
+## Demo
+![Demo-Gif](<./client/src/assets/documentation/ActivateMe-demo.gif>)
 
 ## Screenshots
 
