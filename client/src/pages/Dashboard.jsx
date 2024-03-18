@@ -16,7 +16,6 @@ const myChart = new QuickChart();
 
 const Dashboard = () => {
   let navigate = useNavigate();
-
   const logButton = () => {
     let path = `/log-activity`;
     navigate(path);
@@ -214,18 +213,17 @@ const Dashboard = () => {
     },
   });
 
-  // console.log(reverse);
-  const [deleteActivity] = useMutation(DELETE_ACTIVITY);
+  const [deleteActivity] = useMutation(DELETE_ACTIVITY, {
+    refetchQueries: [QUERY_ME, "me"],
+  });
 
   // Autho Code Begin
   if (Auth.loggedIn() && Auth.getUser().data.username === userParam) {
     return <Navigate to="/Dashboard" />;
   }
-
   if (loading) {
     return <div>Loading...</div>;
   }
-
   if (!user?.username) {
     return (
       <div className="container-fluid w-75 my-5 mt-5 text-center">
@@ -239,16 +237,18 @@ const Dashboard = () => {
   // Auth Code End
 
   // Delete Activity Start
-  const handleDeleteActivity = async ( when, duration, commentText, category, activityType) => {
+  const handleDeleteActivity = async (activityId) => {
     try {
+      console.log(activityId);
       const { data } = await deleteActivity({
-        variables: { when, duration, commentText, category, activityType },
+        variables: { activityId },
       });
       console.log(data);
     } catch (err) {
       console.error(err);
     }
   };
+
   // Delete Activity End
 
   return (
@@ -302,23 +302,23 @@ const Dashboard = () => {
               <tbody>
                 {reverse.slice(0, 5).map((activity) => {
                   return (
-                    <>
-                      <tr>
-                        <td key={activity.ID}>{activity.when}</td>
-                        <td key={activity.ID}>{activity.category.catName}</td>
-                        <td>UPDATE</td>
-                        <td key={activity.ID}>{activity.duration}</td>
-                        <td key={activity.ID}>{activity.commentText}</td>
+                    
+                      <tr key={activity._id}>
+                        <td>{activity.when}</td>
+                        <td>{activity.category.catName}</td>
+                        <td>{activity.activityType.actName}</td>
+                        <td>{activity.duration}</td>
+                        <td>{activity.commentText}</td>
                         <td className="d-flex justify-content-center">
                           <button
-                            onClick={() => handleDeleteActivity()}
+                            onClick={() => handleDeleteActivity(activity._id)}
                             className="btn btn-sm btn-secondary"
                           >
                             <span className="x">X</span>
                           </button>
                         </td>
                       </tr>
-                    </>
+                    
                   );
                 })}
               </tbody>
