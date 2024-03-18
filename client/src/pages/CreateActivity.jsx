@@ -47,7 +47,7 @@ export default function CreateActivityType() {
         });
         console.log(data);
       } catch (error) {}
-      window.location.assign("/dashboard");
+      window.location.assign("/log-activity");
       console.log("Form submitted:", formData);
     };
 

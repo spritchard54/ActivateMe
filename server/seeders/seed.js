@@ -1,3 +1,4 @@
+require('dotenv').config()
 const db = require("../config/connection");
 const { Activity, ActivityType, Category, User } = require("../models");
 const cleanDB = require("./cleanDB");
