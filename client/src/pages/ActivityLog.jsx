@@ -48,11 +48,11 @@ export default function ActivityLog() {
     // Delete Activity Start
     const handleDeleteActivity = async (activityId) => {
       try {
-        console.log(activityId)
+        // console.log(activityId)
         const { data } = await deleteActivity({
           variables: { activityId },
         });
-        console.log(data);
+        // console.log(data);
       } catch (err) {
         console.error(err);
       }

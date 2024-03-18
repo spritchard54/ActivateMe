@@ -43,11 +43,11 @@ export default function Contact() {
       })
       .then(
         () => {
-          console.log('SUCCESS!');
+          // console.log('SUCCESS!');
           setFormSubmitted(true);
         },
         (error) => {
-          console.log('FAILED...', error.text);
+          // console.log('FAILED...', error.text);
         }
       );
   };

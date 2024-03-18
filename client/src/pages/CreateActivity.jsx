@@ -14,9 +14,11 @@ export default function CreateActivityType() {
   const user = data?.me || data?.user || {};
   // navigate to personal profile page if username is yours
 
+  // eslint-disable-next-line no-unused-vars
   const { loading: categoriesLoading, data: categoriesData } =
     useQuery(GET_CATEGORIES);
 
+  // eslint-disable-next-line no-unused-vars
   const [addActivityType, { error: addActivityTypeError, data: addActivityTypeData }] =
     useMutation(ADD_ACTIVITYTYPE);
 
@@ -45,10 +47,11 @@ export default function CreateActivityType() {
             user: Auth.getUser().data._id,
           },
         });
-        console.log(data);
+        // console.log(data);
+      // eslint-disable-next-line no-empty
       } catch (error) {}
       window.location.assign("/log-activity");
-      console.log("Form submitted:", formData);
+      // console.log("Form submitted:", formData);
     };
 
   if (Auth.loggedIn() && Auth.getUser().data.username === userParam) {

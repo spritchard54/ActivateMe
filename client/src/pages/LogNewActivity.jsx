@@ -57,10 +57,10 @@ export default function LogActivity() {
           when: formData.when,
         },
       });
-      console.log(data);
+      // console.log(data);
     } catch (error) {}
     window.location.assign("/dashboard");
-    console.log("Form submitted:", formData);
+    // console.log("Form submitted:", formData);
   };
 
    // Login Authorization Begin
