@@ -53,17 +53,10 @@ mutation addActivity(
 
 export const DELETE_ACTIVITY = gql`
 mutation deleteActivity(
-  $when: String!, 
-  $duration: Float!, 
-  $commentText: String!, 
-  $category: ID!, 
-  $activityType: ID!){
+
+  $activityId: ID!){
   deleteActivity(
-    when: $when, 
-    duration: $duration, 
-    commentText: $commentText, 
-    category: $category, 
-    activityType: $activityType){
+    activityId: $activityId){
         duration
         when
         commentText

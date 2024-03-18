@@ -2,6 +2,8 @@ import { useState } from "react";
 import { Navigate, useParams } from "react-router-dom";
 import { useQuery } from "@apollo/client";
 import { QUERY_USER, QUERY_ME } from "../utils/queries";
+import {useMutation} from "@apollo/client"
+import { DELETE_ACTIVITY } from "../utils/mutations";
 import Auth from "../utils/auth";
 
 export default function ActivityLog() {
@@ -15,6 +17,13 @@ export default function ActivityLog() {
   // Test code below, remove if it doesn't work
   const myActivities = data?.me || data?.user || {};
   let reverse = myActivities.activities?.toReversed();
+
+  const [deleteActivity] = useMutation(DELETE_ACTIVITY, {
+    refetchQueries: [
+      QUERY_ME,
+      'me'
+    ]
+  });
 
   // navigate to personal profile page if username is yours
   if (Auth.loggedIn() && Auth.getUser().data.username === userParam) {
@@ -35,6 +44,19 @@ export default function ActivityLog() {
       </div>
     );
   }
+
+    // Delete Activity Start
+    const handleDeleteActivity = async (activityId) => {
+      try {
+        console.log(activityId)
+        const { data } = await deleteActivity({
+          variables: { activityId },
+        });
+        console.log(data);
+      } catch (err) {
+        console.error(err);
+      }
+    };
 
   return (
     <main id="log-new">
@@ -68,7 +90,9 @@ export default function ActivityLog() {
                       <td>{activity.duration}</td>
                       <td>{activity.commentText}</td>
                       <td className="d-flex justify-content-center">
-                        <button className="btn btn-sm btn-secondary">
+                        <button 
+                        onClick={() => handleDeleteActivity(activity._id)}
+                        className="btn btn-sm btn-secondary">
                           <span className="x">X</span>
                         </button>
                       </td>

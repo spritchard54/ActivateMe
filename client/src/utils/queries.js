@@ -17,6 +17,7 @@ export const QUERY_ME = gql`
       username
       email
       activities{
+        _id
         duration
         commentText
         when

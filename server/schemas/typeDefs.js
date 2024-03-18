@@ -64,11 +64,7 @@ const typeDefs = `
             activityType: ID): Activity
         
         deleteActivity(
-            when: String!, 
-            duration: Float!, 
-            commentText: String!, 
-            category: ID!, 
-            activityType: ID!): Activity
+            activityId: ID!): Activity
             
         
         addActivityType(
