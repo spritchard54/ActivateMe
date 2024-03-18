@@ -45,18 +45,20 @@ export default function ActivityLog() {
     );
   }
 
-  // Delete Activity Start
-  const handleDeleteActivity = async (activityId) => {
-    try {
-      console.log(activityId)
-      const { data } = await deleteActivity({
-        variables: { activityId },
-      });
-      console.log(data);
-    } catch (err) {
-      console.error(err);
-    }
-  };
+
+    // Delete Activity Start
+    const handleDeleteActivity = async (activityId) => {
+      try {
+        // console.log(activityId)
+        const { data } = await deleteActivity({
+          variables: { activityId },
+        });
+        // console.log(data);
+      } catch (err) {
+        console.error(err);
+      }
+    };
+
 
   return (
     <main id="log-new">

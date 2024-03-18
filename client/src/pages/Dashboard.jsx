@@ -43,7 +43,7 @@ const Dashboard = () => {
   // Today Chart
   const myObject = {};
   if (data?.me) {
-    console.log(data.me)
+    // console.log(data.me)
     // returns the categories
     for (let index = 0; index < data.me.activities.length; index++) {
       if (data?.me.activities[index].when === today) {
@@ -242,13 +242,13 @@ const Dashboard = () => {
   // Delete Activity Start
   const handleDeleteActivity = async (activityId) => {
     try {
-      console.log(activityId);
+      // console.log(activityId);
       const { data } = await deleteActivity({
         variables: { activityId },
       });
-      console.log(data);
+      // console.log(data);
     } catch (err) {
-      console.error(err);
+      // console.error(err);
     }
   };
 
