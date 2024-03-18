@@ -157,7 +157,7 @@ export default function LogActivity() {
                 required
                 
               >
-                {/* <option value="">Choose...</option> */}
+                <option value="">Choose...</option>
                 {/* Map over activity types data to generate options */}
                 {activityTypesData &&
                   activityTypesData.activityTypes.map((activityType) => (
