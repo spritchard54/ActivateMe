@@ -141,24 +141,21 @@ const resolvers = {
     // Mutation to delete an activity
     deleteActivity: async (
       parent,
-      { when, duration, commentText, category, activityType },
+      { activityId },
       context
     ) => {
-      const deleteActivity = await Activity.deleteOne({
-        when,
-        duration,
-        commentText,
-        category: category,
-        activityType: activityType,
-      });
       if (context.user) {
         const userData = await User.findOneAndUpdate(
           { _id: context.user._id },
-          { $pull: { activities: Activity._id } },
+          { $pull: { activities: activityId } },
           { new: true }
         );
-      }
+        const deleteActivity = await Activity.findOneAndDelete({
+          _id: activityId 
+     })
       return deleteActivity;
+    }
+    throw Error('Must be logged in');
     },
 
     // Example code
