@@ -1,11 +1,11 @@
 import { useState } from 'react';
 import { Navigate, useParams } from 'react-router-dom';
-import { useQuery } from '@apollo/client';
-import { QUERY_USER, QUERY_ME } from "../utils/queries"
+import { useMutation, useQuery } from '@apollo/client';
+import { QUERY_USER, QUERY_ME, GET_CATEGORIES } from "../utils/queries";
+import { ADD_ACTIVITYTYPE } from '../utils/mutations';
 import Auth from '../utils/auth';
 
-export default function CreateActivity() {
-
+export default function CreateActivityType() {
   const { username: userParam } = useParams();
   const { loading, data } = useQuery(userParam ? QUERY_USER : QUERY_ME, {
     variables: { username: userParam },
@@ -13,6 +13,44 @@ export default function CreateActivity() {
 
   const user = data?.me || data?.user || {};
   // navigate to personal profile page if username is yours
+
+  const { loading: categoriesLoading, data: categoriesData } =
+    useQuery(GET_CATEGORIES);
+
+  const [addActivityType, { error: addActivityTypeError, data: addActivityTypeData }] =
+    useMutation(ADD_ACTIVITYTYPE);
+
+    const [formData, setFormData] = useState({
+      category: "",
+      actName: ""
+    });
+  
+    const handleInputChange = (e) => {
+      const { name, value } = e.target;
+      setFormData({
+        ...formData,
+        [name]: value,
+      });
+    };
+  
+   
+    const handleSubmit = async (e) => {
+      e.preventDefault();
+      try {
+        // console.log("Form submitted:", formData);
+        const { data } = await addActivityType({
+          variables: {
+            category: formData.category,
+            actName: formData.actName,
+            user: Auth.getUser().data._id,
+          },
+        });
+        console.log(data);
+      } catch (error) {}
+      window.location.assign("/dashboard");
+      console.log("Form submitted:", formData);
+    };
+
   if (Auth.loggedIn() && Auth.getUser().data.username === userParam) {
     return <Navigate to="/Dashboard" />;
   }
@@ -37,32 +75,7 @@ export default function CreateActivity() {
   }
 
 
-  // State to manage form data
-  const [formData, setFormData] = useState({
-    category: '',
-    activityName: '',
-  });
 
-  // Function to handle form input changes
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prevData) => ({
-      ...prevData,
-      [name]: value,
-    }));
-  };
-
-  // Function to handle form submission
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Add logic to handle form submission (e.g., create new activity)
-    console.log('Form submitted:', formData);
-    // Reset form data after submission
-    setFormData({
-      category: '',
-      activityName: '',
-    });
-  };
 
   return (
 
@@ -78,53 +91,41 @@ export default function CreateActivity() {
 
             <form onSubmit={handleSubmit}>
 
-              <div className="mb-3">
-
-                <label htmlFor="category" className="form-label green-title">
-                  Select a category
-                </label>
-
-                <select
-                  className="form-select"
-                  id="category"
-                  name="category"
-                  onChange={handleInputChange}
-                  value={formData.category}
-                  required
-                >
-
-                  {/* Add options for categories */}
-                  <option value="">
-                    Choose...
-                  </option>
-
-                  <option value="exercise">
-                    Exercise
-                  </option>
-
-                  <option value="work">
-                    Work
-                  </option>
-
-                  {/* Add more options as needed */}
-
-                </select>
-
-              </div>
+            <div className="mb-3">
+              <label htmlFor="category" className="form-label green-title">
+                Select a category
+              </label>
+              <select
+                className="form-select"
+                id="category"
+                name="category"
+                onChange={handleInputChange}
+                value={formData.category}
+                required
+              >
+                <option value="">Choose...</option>
+                {categoriesData &&
+                  categoriesData.categories.map((category) => (
+                    <option key={category._id} value={category._id}>
+                      {category.catName}
+                    </option>
+                  ))}
+              </select>
+            </div>
 
               <div className="mb-3">
 
-                <label htmlFor="activityName" className="form-label green-title">
+                <label htmlFor="actName" className="form-label green-title">
                   Enter the name of the new activity
                 </label>
 
                 <input
                   type="text"
                   className="form-control"
-                  id="activityName"
-                  name="activityName"
+                  id="actName"
+                  name="actName"
                   onChange={handleInputChange}
-                  value={formData.activityName}
+                  value={formData.actName}
                   required
                 />
 

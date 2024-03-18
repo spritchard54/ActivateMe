@@ -68,4 +68,15 @@ mutation deleteActivity(
         }
   }
 }
+`
+export const ADD_ACTIVITYTYPE = gql`
+  mutation AddActivityType($actName: String!, $user: ID!) {
+    addActivityType(actName: $actName, userId: $user) {
+      _id
+      actName
+      user {
+        _id
+      }
+    }
+  }
 `;
