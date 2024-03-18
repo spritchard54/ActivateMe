@@ -7,7 +7,7 @@ ActivateMe is a collaborative project designed to empower users in tracking thei
 - [Features](#features)
 - [Technologies](#technologies)
 - [Usage](#usage)
-- [Image](#image)
+- [Screenshots](#screenshots)
 - [Contributors](#contributors)
 - [License](#license)
 
@@ -46,11 +46,34 @@ ActivateMe is a collaborative project designed to empower users in tracking thei
 Track your trends and patterns to make informed decisions about your lifestyle and productivity.
 
 
-## Image
+## Screenshots
 
+### Homepage
+![Homepage](<./client/src/assets/documentation/Screenshot 2024-03-15 at 1.09.10 AM.png>)
 
-![Homepage](<Screenshot 2024-03-15 at 1.09.10 AM.png>)
+### Login
+![Login](<./client/src/assets/documentation/LoginSS.png>)
 
+### Signup
+![Signup](<./client/src/assets/documentation/SignupSS.png>)
+
+### Dashboard
+![Dashboard](<./client/src/assets/documentation/DashboardSS.png>)
+
+### Activity Log
+![Activity-Log](<./client/src/assets/documentation/Activity-logSS.png>)
+
+### Log an Activity
+![Log-Activity](<./client/src/assets/documentation/Log-ActivitySS.png>)
+
+### Create an Activity
+![Create-Activity](<./client/src/assets/documentation/Create-ActivitySS.png>)
+
+### Contact Us
+![Contact](<./client/src/assets/documentation/ContactSS.png>)
+
+### About Us
+![About](<./client/src/assets/documentation/AboutSS.png>)
 
 ## Contributors
 
