@@ -7,7 +7,8 @@ ActivateMe is a collaborative project designed to empower users in tracking thei
 - [Features](#features)
 - [Technologies](#technologies)
 - [Usage](#usage)
-- [Image](#image)
+- [Demo](#demo)
+- [Screenshots](#screenshots)
 - [Contributors](#contributors)
 - [License](#license)
 
@@ -36,6 +37,8 @@ ActivateMe is a collaborative project designed to empower users in tracking thei
 
 ## Usage
 
+Visit the [Deployed Site](https://activateme.onrender.com/)
+
 1. **Sign Up/Login:** Begin by creating an account or logging in to ActivateMe.
 2. **Dashboard:** Upon signing up or logging in, you'll be directed to your personalized Dashboard.
 3. **Log Activities:** Fill out your daily activities using the provided form, detailing your exercise routines, dietary intake, sleep patterns, and more. Ensure to submit your entries daily to maintain a comprehensive record of your habits over time.
@@ -45,12 +48,37 @@ ActivateMe is a collaborative project designed to empower users in tracking thei
 4. **Dashboard Insights:** Your Dashboard will showcase graphical representations of your logged activities, offering valuable insights into your daily routines and progress.
 Track your trends and patterns to make informed decisions about your lifestyle and productivity.
 
+## Demo
+![Demo-Gif](<./client/src/assets/documentation/ActivateMe-demo.gif>)
 
-## Image
+## Screenshots
 
+### Homepage
+![Homepage](<./client/src/assets/documentation/Screenshot 2024-03-15 at 1.09.10 AM.png>)
 
-![Homepage](<Screenshot 2024-03-15 at 1.09.10 AM.png>)
+### Login
+![Login](<./client/src/assets/documentation/LoginSS.png>)
 
+### Signup
+![Signup](<./client/src/assets/documentation/SignupSS.png>)
+
+### Dashboard
+![Dashboard](<./client/src/assets/documentation/DashboardSS.png>)
+
+### Activity Log
+![Activity-Log](<./client/src/assets/documentation/Activity-logSS.png>)
+
+### Log an Activity
+![Log-Activity](<./client/src/assets/documentation/Log-ActivitySS.png>)
+
+### Create an Activity
+![Create-Activity](<./client/src/assets/documentation/Create-ActivitySS.png>)
+
+### Contact Us
+![Contact](<./client/src/assets/documentation/ContactSS.png>)
+
+### About Us
+![About](<./client/src/assets/documentation/AboutSS.png>)
 
 ## Contributors
 

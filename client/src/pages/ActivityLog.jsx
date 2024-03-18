@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Navigate, useParams } from "react-router-dom";
 import { useQuery } from "@apollo/client";
 import { QUERY_USER, QUERY_ME } from "../utils/queries";
-import {useMutation} from "@apollo/client"
+import { useMutation } from "@apollo/client"
 import { DELETE_ACTIVITY } from "../utils/mutations";
 import Auth from "../utils/auth";
 
@@ -45,6 +45,7 @@ export default function ActivityLog() {
     );
   }
 
+
     // Delete Activity Start
     const handleDeleteActivity = async (activityId) => {
       try {
@@ -58,6 +59,7 @@ export default function ActivityLog() {
       }
     };
 
+
   return (
     <main id="log-new">
       <div className="container-fluid w-75 mt-4" id="activity-log-main">
@@ -66,42 +68,46 @@ export default function ActivityLog() {
             Activity Log
           </h2>
 
-          <table className="table table-dark table-striped activities-table">
-            <thead>
-              <tr>
-                <th scope="col">Date</th>
-                <th scope="col">Category</th>
-                <th scope="col">Activity</th>
-                <th scope="col">Duration</th>
-                <th scope="col">Comments</th>
-                <th scope="col" className="text-center">
-                  Delete
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              {reverse.slice(0, 100).map((activity) => {
-                return (
-                  <>
-                    <tr key={activity._id}>
-                      <td>{activity.when}</td>
-                      <td>{activity.category.catName}</td>
-                      <td>{activity.activityType.actName}</td>
-                      <td>{activity.duration}</td>
-                      <td>{activity.commentText}</td>
-                      <td className="d-flex justify-content-center">
-                        <button 
-                        onClick={() => handleDeleteActivity(activity._id)}
-                        className="btn btn-sm btn-secondary">
-                          <span className="x">X</span>
-                        </button>
-                      </td>
-                    </tr>
-                  </>
-                );
-              })}
-            </tbody>
-          </table>
+          <div className="table-responsive">
+
+            <table className="table table-dark table-striped activities-table">
+              <thead>
+                <tr>
+                  <th scope="col">Date</th>
+                  <th scope="col">Category</th>
+                  <th scope="col">Activity</th>
+                  <th scope="col">Duration</th>
+                  <th scope="col">Comments</th>
+                  <th scope="col" className="text-center">
+                    Delete
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                {reverse.slice(0, 100).map((activity) => {
+                  return (
+                    <>
+                      <tr key={activity._id}>
+                        <td>{activity.when}</td>
+                        <td>{activity.category.catName}</td>
+                        <td>{activity.activityType.actName}</td>
+                        <td>{activity.duration}</td>
+                        <td>{activity.commentText}</td>
+                        <td className="text-center align-middle">
+                          <button
+                            onClick={() => handleDeleteActivity(activity._id)}
+                            className="btn btn-sm btn-danger">
+                            <span className="x">X</span>
+                          </button>
+                        </td>
+                      </tr>
+                    </>
+                  );
+                })}
+              </tbody>
+            </table>
+
+          </div>
         </div>
       </div>
     </main>
